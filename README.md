@@ -1,8 +1,9 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/banner_dark.jpg">
-  <source media="(prefers-color-scheme: light)" srcset="assets/banner_light.jpg">
-  <img alt="A.U.R.A. - Agentic Unified Recollection Archive" src="assets/banner_dark.jpg" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Cliffxrd/aura-subconscious/main/assets/banner_dark.jpg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Cliffxrd/aura-subconscious/main/assets/banner_light.jpg">
+  <img alt="A.U.R.A. - Agentic Unified Recollection Archive" src="https://raw.githubusercontent.com/Cliffxrd/aura-subconscious/main/assets/banner_dark.jpg" width="100%">
 </picture>
+
 
 > [!TIP]
 > <details>
