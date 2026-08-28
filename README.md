@@ -4,6 +4,23 @@
   <img alt="A.U.R.A. - Agentic Unified Recollection Archive" src="assets/banner_dark.jpg" width="100%">
 </picture>
 
+> [!TIP]
+> <details>
+> <summary> <sub> How to create theme-adaptive images, like this one </sub> </summary>
+>
+> <sub>This banner image changes depending on preference for light/dark mode</sub>
+>
+> ```markdown
+> <picture> <!-- Example: -->
+>  <source media="(prefers-color-scheme: dark)" srcset="URL_DARK_THEME_IMG"> <!-- used when github darkmode is active -->
+>  <source media="(prefers-color-scheme: light)" srcset="URL_LIGHT_THEME_IMG"> <!-- used when github lightmode is active -->
+>  <img src="URL_TO_FALLBACK_IMG" alt="fallback&accessibility text description" > <!-- used as fallback, including accessibility text support -->
+> </picture>
+> ```
+>
+> <sub> For more, see [Adding an image to suit your visitors](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/quickstart-for-writing-on-github#adding-an-image-to-suit-your-visitors) </sub>
+> </details>
+
 <div align="center">
 
 # A.U.R.A.
@@ -13,7 +30,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![Architecture: Neuro--Cognitive](https://img.shields.io/badge/Architecture-Neuro--Cognitive-magenta.svg)](#-master-neuro-architecture)
-[![Memory Matrix: 6--4--8--8](https://img.shields.io/badge/Memory%20Matrix-6--4--8--8-cyan.svg)](#-the-6-4-8-8-birthday-memory-matrix)
+[![Memory Matrix: 4--6--8--8](https://img.shields.io/badge/Memory%20Matrix-4--6--8--8-cyan.svg)](#-the-4-6-8-8-resonance-memory-matrix)
 [![Creator: Cliffxrd](https://img.shields.io/badge/Architect-Cliffxrd-orange.svg)](https://github.com/Cliffxrd)
 
 </div>
@@ -26,7 +43,7 @@ Modern AI coding agents (Google Antigravity, Claude Code, Cursor, Cline, Devin, 
 
 **A.U.R.A.** (Agentic Unified Recollection Archive) is an open-source framework that provides autonomous AI agents with a **persistent synthetic subconscious**. 
 
-By mirroring biological brain structures and organizing memory across a **multi-tiered cognitive matrix (the 6-4-8-8 Birthday Matrix)** in an **HSL (Hue-Saturation-Lightness) emotional vector space**, AURA ensures your AI companion grows alongside you, compounding understanding session after session with zero token bloat.
+By mirroring biological brain structures and organizing memory across a **multi-tiered cognitive matrix (the 4-6-8-8 Resonance Matrix)** in an **HSL (Hue-Saturation-Lightness) emotional vector space**, AURA ensures your AI companion grows alongside you, compounding understanding session after session with zero token bloat.
 
 ---
 
@@ -51,9 +68,9 @@ aura/
 
 ---
 
-## ⚡ The 6-4-8-8 Birthday Memory Matrix
+## ⚡ The 4-6-8-8 Resonance Memory Matrix
 
-AURA’s working context is governed by a 4-tier synchronized waterfall allocation (architected around founder `Cliffxrd`'s signature **06/04/1988** resonance):
+AURA’s working context is governed by a 4-tier synchronized waterfall allocation (codified around a signature harmonic constant special to creator `Cliffxrd`):
 
 ```
 ┌────────────────────────────────────────────────────────┐
