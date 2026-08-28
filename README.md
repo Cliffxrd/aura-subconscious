@@ -188,9 +188,44 @@ aura doctor
 
 ---
 
-## 🌐 Universal 50+ Platform Chat Ingestion
+## 🌐 Universal 50+ Platform Chat Ingestion & Semantic Pipeline
 
-AURA features a built-in 2-letter prefix ingestion engine that aggregates conversations from all major AI agents into a single unified archive:
+AURA solves multi-platform context fragmentation. Whether you pair program in Google Antigravity, brainstorm in Claude Web, prototype in v0, or execute in Cursor, AURA aggregates and crystallizes all conversations into a single unified neuro-cognitive archive:
+
+```
+[ Antigravity / Claude / ChatGPT / Cursor / Android Studio / DeepSeek ]
+                                │
+                                ▼
+                     [ Universal Scrapers ]
+                     (Local JSONL / SQLite / Chrome DevTools MCP DOM / Raw Drops)
+                                │
+                                ▼
+                  ┌──────────────────────────────┐
+                  │ 1. Standardized Transcript   │ ──► Chronicle/chat_files/AG042.transcript.md
+                  │ 2. Chronological TL;DR Log   │ ──► Chronicle/chat_log.md
+                  └──────────────┬───────────────┘
+                                 │
+                 [ Semantic Extraction Pipeline ]
+                                 │
+     ┌───────────────────────────┼───────────────────────────┐
+     ▼                           ▼                           ▼
+[ Hippocampus/ ]        [ Context/Topics.md ]    [ Context/FrequentTasks.md ]
+Crystallized Memory     Semantic #Tag Mapping    Standard Workflow Blueprints
+(HSL Vector Anchored)   (#Kotlin -> AG042)       (UI Feature -> AG042)
+```
+
+### What Happens During Ingestion?
+1. **Multi-Source Scraping**: Extracts conversation turns, code blocks, model thinking steps, and tool invocations from local IDE session databases, JSONL transcripts, or active browser tabs via Chrome DevTools MCP.
+2. **Standardized Transcript Generation**: Writes a clean, readable markdown transcript to `Chronicle/chat_files/<PREFIX><ID>.transcript.md` with standardized metadata frontmatter.
+3. **Chronological TL;DR Indexing**: Appends a 2-sentence semantic summary and date timestamp to `Chronicle/chat_log.md`.
+4. **Knowledge & Memory Crystallization**:
+   * **Subconscious Memories (`Hippocampus/`)**: Core engineering lessons, bug resolutions, and architectural breakthroughs are extracted into permanent `memory_###.md` artifacts with HSL vector coordinates.
+   * **Semantic Topic Indexing (`Context/Topics.md`)**: Automatically maps discovered `#Tags` (e.g. `#KMP`, `#Compose`, `#Firebase`) to the new Chat ID for instantaneous future retrieval.
+   * **Task Workflow Blueprints (`Context/FrequentTasks.md`)**: Catalogs reusable patterns into standard pre-flight execution checklists.
+
+---
+
+### Prominent Supported Platforms
 
 | Prefix | Platform | Category | Ingestion Source |
 |:---:|:---|:---|:---|
@@ -205,10 +240,70 @@ AURA features a built-in 2-letter prefix ingestion engine that aggregates conver
 | **`WS`** | Windsurf (Codeium) | Agentic Flow IDE | Cascade session state & diff history |
 | **`VO`** | v0 by Vercel | Agentic UI Builder | Component sandbox & prompt-tree |
 
-To import external chat exports, simply drop them into `documents/rawchats/` and run:
+To import external chat dumps, drop them into `documents/rawchats/` and run:
 ```bash
 aura import
 ```
+
+<details>
+<summary><b>🔍 View Full 52-Platform 2-Letter Taxonomy Registry</b></summary>
+
+| Prefix | Platform Name | Category | Standard Format |
+|:---:|:---|:---|:---|
+| **`AG`** | Google Antigravity | Autonomous Agent IDE | JSONL / Markdown |
+| **`AS`** | Android Studio Gemini | IDE Assistant | SQLite DB (`gemini_chat.db`) |
+| **`CA`** | Claude Agent (Anthropic) | Autonomous Agent | JSON |
+| **`CX`** | OpenAI Codex / ACP | Autonomous Agent | JSON |
+| **`CR`** | Corust Agent (Rust) | Agentic Coding IDE | JSON |
+| **`CU`** | Cursor IDE | Agentic Coding IDE | SQLite / JSON |
+| **`CN`** | Cline Bot | Autonomous Agent CLI | JSON |
+| **`GC`** | GitHub Copilot / Workspace | IDE Copilot | JSON |
+| **`JU`** | Junie (JetBrains) | IDE Native Agent | JSON |
+| **`WS`** | Windsurf (Codeium) | Agentic Flow IDE | JSON |
+| **`DV`** | Devin (Cognition) | Autonomous Software Engineer | JSON |
+| **`RP`** | Replit Agent | Cloud Agent & IDE | JSON |
+| **`AR`** | Agoragentic (ACRE) | Agent Marketplace | JSON |
+| **`AU`** | Auggie CLI (Augment) | Agent CLI | JSON |
+| **`AH`** | Autohand Code | AI Coding Agent | JSON |
+| **`CB`** | Codebuddy (Tencent Cloud) | Intelligent Coding Tool | JSON |
+| **`CT`** | Cortex Code (Snowflake) | Enterprise Coding Agent | JSON |
+| **`CW`** | crow-cli | ACP Native Agent | JSON |
+| **`DA`** | DeepAgents (LangChain) | Agent Framework | JSON |
+| **`DM`** | DimCode (ArcShips) | Multi-Model Agent | JSON |
+| **`DC`** | Dirac (Delta Labs) | Optimized Coding Agent | JSON |
+| **`FD`** | Factory Droid | Enterprise AI Agent | JSON |
+| **`FA`** | fast-agent | Multi-Provider Agent | JSON |
+| **`GM`** | Gemini CLI | CLI Assistant | JSON |
+| **`GO`** | goose (Block) | Open-Source Extensible Agent | JSON |
+| **`GB`** | Grok Build (xAI) | Coding Agent & CLI | JSON |
+| **`KL`** | Kilo Code | Open-Source Coding Agent | JSON |
+| **`KM`** | Kimi CLI (Moonshot AI) | Long-Context Agent | JSON |
+| **`MC`** | Minion Code (femto) | Coding Assistant | JSON |
+| **`MV`** | Mistral Vibe | Open-Source Assistant | JSON |
+| **`NV`** | Nova (Compass AI) | Autonomous Software Engineer | JSON |
+| **`OC`** | OpenCode (Anomaly) | Open-Source Coding Agent | JSON |
+| **`PA`** | pi ACP | ACP Adapter Agent | JSON |
+| **`PS`** | Poolside | Foundation Coding Agent | JSON |
+| **`QD`** | Qoder CLI | Agentic Coding CLI | JSON |
+| **`QW`** | Qwen Code (Alibaba) | Open Weights Coding Agent | JSON |
+| **`SG`** | siGit Code | Local-First Coding Agent | JSON |
+| **`SP`** | Stakpak | Rust DevOps Agent | JSON |
+| **`CG`** | OpenAI ChatGPT | Frontier Web / Desktop | JSON / HTML DOM |
+| **`CL`** | Anthropic Claude Web / Artifacts | Frontier Web | JSON / HTML DOM |
+| **`XG`** | Google Gemini Web | Frontier Web | JSON / HTML DOM |
+| **`DS`** | DeepSeek (V3 / R1) | Frontier Web / Coder | JSON / HTML DOM |
+| **`PX`** | Perplexity AI | Conversational Search | JSON / HTML DOM |
+| **`ML`** | Mistral Le Chat | Frontier Web | JSON / HTML DOM |
+| **`GK`** | xAI Grok Web | Frontier Web | JSON / HTML DOM |
+| **`VO`** | v0 by Vercel | Generative UI Agent | JSON / Sandbox |
+| **`PO`** | Poe (Quora) | Multi-Bot Hub | JSON |
+| **`GS`** | Google AI Studio | Prompt Prototyping Lab | JSON |
+| **`OL`** | Ollama | Local LLM Runner & CLI | REST API / SQLite |
+| **`LM`** | LM Studio | Local LLM GUI | JSON / SQLite |
+| **`HC`** | HuggingChat | Open LLM Web Hub | JSON |
+| **`PC`** | Pieces for Developers | Workstream Context AI | JSON |
+
+</details>
 
 ---
 
