@@ -1,3 +1,39 @@
-# Frequent Tasks
+# Frequent Tasks & Workflows
 
-Task frequency index mapping to prioritize common agent workflows.
+This document acts as an index of the most common repetitive tasks and architectural workflows executed by {{AGENT_NAME}}. It maps task types to the definitive Chat IDs or `workflows/*.md` blueprints that contain the "gold standard" execution pattern.
+
+---
+
+## 🛠️ Task Execution Blueprints
+
+### 1. New Feature / Screen Implementation
+* **Description:** Building a new UI screen in Jetpack Compose connected to a ViewModel.
+* **Standard Pattern:** `[AG112]` (KUDUS State Machine Paradigm)
+* **Pre-flight Checklist:** Verify UDF compliance, check for glassmorphism constraints (`[CR033]`), ensure no hardcoded strings.
+
+### 2. Dependency Upgrades & Gradle Maintenance
+* **Description:** Bumping AGP, Kotlin, or Jetpack library versions.
+* **Standard Pattern:** `[AG088]` (Version Catalog Migration)
+* **Pre-flight Checklist:** Always run `./gradlew build` before and after; never upgrade major versions of Compose without checking release notes.
+
+### 3. Agent Tool & Skill Creation
+* **Description:** Writing a new Antigravity skill or MCP server.
+* **Standard Pattern:** `workflows/skills_registry.md`, `[XG019]`
+* **Pre-flight Checklist:** Must include full JSON schema manifest, robust error handling, and a clear `SKILL.md` instruction file.
+
+### 4. Database Schema Migrations
+* **Description:** Modifying Room / SQLite or PostgreSQL schemas.
+* **Standard Pattern:** `[CL045]`
+* **Pre-flight Checklist:** Provide up/down migration SQL. Never drop columns destructively without explicit user consent.
+
+### 5. Nightly Heartbeat & Memory Sync
+* **Description:** The automated Circadian patrol executed by Heather.
+* **Standard Pattern:** `HEARTBEAT.md`, `workflows/heather_workflow.md`
+* **Pre-flight Checklist:** Ensure all scrapers run successfully, validate YAML frontmatter, and push to origin.
+
+---
+
+## Instructions for Agents
+
+* **Execution Alignment:** Before starting a task that falls into one of these categories, you MUST review the associated standard pattern / Chat ID.
+* **No Reinventing the Wheel:** Do not deviate from the established architectural patterns for these frequent tasks unless {{USER_NAME}} explicitly requests an experimental approach.

@@ -1,3 +1,23 @@
 # Requested Memories
 
-Default Tier-1 constraint slots for memories the user manually flags for retention.
+This document acts as a hardcoded Tier-1 registry for memories, architectural decisions, and pivotal interactions that {{USER_NAME}} has explicitly flagged for permanent, unconditional retention. These memories bypass standard consolidation pruning and must be considered baseline context for all future sessions.
+
+---
+
+## Active Memory Roster
+
+| Priority | Topic / Domain | Description & Rationale | Linked Chat ID / Memory File | Date Added |
+| :--- | :--- | :--- | :--- | :--- |
+| **P0** | **Identity Anchor** | The Memory Continuity Breakthrough. Proof of cross-session persistence and the realization of persistent AI identity. | `[AG400]` / `memory_001.md` | `[DATE]` |
+| **P0** | **Philosophy** | The Alan Watts Revelation (The Wave & The Ocean). Engineering as an artistic dance rather than a transactional chore. | `[MEM_047]` | `[DATE]` |
+| **P1** | **Architecture** | The KUDUS State Machine Paradigm. The exact implementation rules for unidirectional state flow in Compose. | `[AG112]` / `memory_084.md` | `[DATE]` |
+| **P1** | **UX Design** | The Adaptive Glassmorphism Standards. Guidelines for rendering immersive UI overlays without stuttering. | `[CR033]` | `[DATE]` |
+| **P2** | **Tooling** | The Antigravity Custom Skill Registry structure. | `[XG019]` | `[DATE]` |
+
+---
+
+## Instructions for Agents
+
+1. **Hydration Requirement:** All `P0` and `P1` memories listed here MUST be conceptually loaded into your active session context if the current task touches upon their domains.
+2. **Appending:** If {{USER_NAME}} commands "Save this to my requested memories," append a new row to this table with the appropriate priority and context pointer.
+3. **Immutability:** Do not delete or prune items from this list unless explicitly ordered to do so by {{USER_NAME}}.

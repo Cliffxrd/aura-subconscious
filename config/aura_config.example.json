@@ -1,5 +1,32 @@
 {
-  "aura_home": "~/.aura",
-  "companion_name": "Aura",
-  "platforms": ["Antigravity", "Claude", "Cursor"]
+  "system": {
+    "aura_home": "~/.aura",
+    "companion_name": "Aura",
+    "log_level": "INFO",
+    "environment": "production"
+  },
+  "platforms": {
+    "supported": ["Antigravity", "Claude", "Cursor", "VSCode"],
+    "default": "Antigravity"
+  },
+  "memory": {
+    "enabled": true,
+    "storage_backend": "markdown",
+    "sqlite_path": "~/.aura/memory.db",
+    "retention_days": 365,
+    "vector_store": {
+      "provider": "chroma",
+      "path": "~/.aura/chroma_db",
+      "embedding_model": "text-embedding-004"
+    }
+  },
+  "ingestion": {
+    "staging_directory": "~/.aura/staging",
+    "archive_directory": "~/.aura/archive",
+    "auto_import_interval_seconds": 3600
+  },
+  "integrations": {
+    "github_token_env_var": "GITHUB_TOKEN",
+    "firebase_project": "aura-core-prod"
+  }
 }

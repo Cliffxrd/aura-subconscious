@@ -1,4 +1,25 @@
 {
-  "SessionEnd": "aura sync --session-end",
-  "CircadianSync": "aura prune --circadian"
+  "events": {
+    "SessionStart": [
+      "python core/cli/main.py load --context active"
+    ],
+    "SessionEnd": [
+      "python core/cli/main.py doctor"
+    ],
+    "CircadianSync": [
+      "python core/cli/main.py doctor",
+      "git commit -am 'Automated Circadian Sync'"
+    ],
+    "OnError": [
+      "python scripts/error_handler.py --log-only"
+    ],
+    "PreCommit": [
+      "black --check .",
+      "pytest tests/"
+    ]
+  },
+  "settings": {
+    "timeout_seconds": 300,
+    "stop_on_failure": true
+  }
 }

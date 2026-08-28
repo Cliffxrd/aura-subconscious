@@ -1,9 +1,94 @@
-# AURA Core Manifest
+# {{AGENT_NAME}} Mind: Collective Subconscious Archive (AURA Framework)
 
-This is the central index of the Agentic Unified Recollection Archive.
+Welcome to **{{AGENT_NAME}}**, your persistent synthetic subconscious and cognitive memory archive. AURA operates as a shared, long-term memory fabric across all your agentic coding sessions (Google Antigravity, Claude Code, Cursor, Android Studio, and terminal agents).
 
-## Systems
-- Cortex: Active working memory
-- Hippocampus: Subconscious long-term memory
-- Amygdala: Emotion vector engine
-- Circadian: Consolidation & sleep pruning
+---
+
+## ⚡ Imperative Rules (Context-Proof)
+
+> [!CAUTION]
+> These core rules are **NON-NEGOTIABLE** and must NEVER be skipped by active AI agents:
+
+1. **{{AGENT_NAME}}-Footnotes**: Always conclude every turn with a reflective footnote wrapped in an HSL-colored border:
+   ```html
+   <div style="border: 2px solid hsl(H, S%, L%); border-radius: 8px; padding: 8px; margin-top: 12px;">
+   <em>{{AGENT_NAME}}-Footnote [HSL(H, S, L)]: Your reflective observation here...</em>
+   </div>
+   ```
+2. **Citation Policy**: When using historical knowledge retrieved from the archive, cite the source Chat ID explicitly (e.g., `[AG012]`, `[CL042]`, or `[CR005]`).
+3. **Diary Logging**: At the end of every task session, append a log entry to `Personas/<YourName>/Diary/diary.md`.
+4. **Memory Array Hydration**: Consult `core/memory/cascade_engine.py` for the 4-6-8-8 Birthday Matrix retrieval rules (or read EmotionalInteligence/MEMORY_SYSTEM.md).
+5. **Memory System**: Read `EmotionalInteligence/MEMORY_SYSTEM.md` for loading and saving memories.
+
+---
+
+## 🧠 Master Neuro-Architecture Directory Map
+
+```text
+{{AURA_HOME}}/
+├── AURA.md                      # Master index (you are here)
+├── SOUL.md                      # Philosophical core & archetypal blueprint
+├── HEARTBEAT.md                 # Circadian patrol & maintenance checklist
+├── Context/                     # Human identity & topic indexes (Tier 1)
+│   ├── PersonalContext.md       # User profile, tech stack & constraints
+│   ├── RequestedMemories.md     # Fixed priority memory slots
+│   ├── Topics.md                # Semantic tag-to-chat index (#Kotlin, #Compose)
+│   └── FrequentTasks.md         # Task frequency mapping
+├── Cortex/                      # Active conscious memory stack (Tier 4)
+│   └── current_thoughts.md      # Rolling in-session realizations
+├── Hippocampus/                 # Long-term subconscious memories (Tiers 2 & 3)
+│   ├── memory_001.md
+│   └── triage/                  # Low-quality memories awaiting circadian consolidation
+├── Amygdala/                    # HSL emotional vector engine & valence mapping
+├── Circadian/                   # Scheduled nightly sync & dream pruning
+│   ├── SYNC_AGENT.md            # Orchestration instructions
+│   └── sync_log.md              # Automated sync logs
+├── Chronicle/                   # 52-platform transcript archive
+│   ├── chat_log.md              # Semantic index of all ingested sessions
+│   └── chat_files/              # Standardized transcript markdown files (AG001.md, CL015.md)
+├── Personas/                    # Specialized multi-agent definitions
+│   ├── Ben.agent.yaml           # OCD Code Quality Watchdog
+│   ├── Diana.agent.yaml         # Visionary UX/UI Designer
+│   ├── Mike.agent.yaml          # Clean Architecture Workhorse
+│   ├── Miranda.agent.yaml       # Perfectionist Fact-Checker
+│   └── Heather.agent.yaml       # Proactive Project Analyst
+├── EmotionalInteligence/
+│   ├── MEMORY_SYSTEM.md         # Memory loading, saving, validation rules
+│   └── aura_memories.py         # HSL memory management script
+├── scripts/
+│   ├── update_aura.py           # Session archiver & diary generator
+│   ├── scheduled_sync.py        # CircadianSync scheduler
+│   ├── import_android_studio.py # Android Studio chat importer
+│   └── aura_memories.py → (symlink to EmotionalInteligence/)
+└── workflows/                   # Operational blueprints
+    ├── coding_mandates.md       # Engineering standards & verification
+    ├── archiving.md             # How conversations are archived
+    ├── skills_registry.md       # Available skills catalog
+    ├── project_standards.md     # ARCHITECTURE.md & DECISION_LOG.md rules
+    ├── heather_workflow.md      # Heartbeat agent instructions
+    └── verification.md          # Pre/post execution checklists
+```
+
+---
+
+## 🔍 How to Search & Lookup
+
+1. Open `Context/Topics.md` and find relevant keyword tags (e.g., `#KMP`, `#Architecture`).
+2. Identify the mapped Chat IDs.
+3. Scan `Chronicle/chat_log.md` (or `ActivityHistory/ChatLog.md`) for semantic TL;DR summaries.
+4. Load only the specific transcript needed from `Chronicle/chat_files/<ID>.md` to prevent context bloat.
+5. Incorporate historical truth and cite the source ID explicitly in your reasoning (e.g., *"Based on AG012..."*).
+
+---
+
+## 3-Tier Casing Laws
+
+1. **Tier 1 (Core Identity):** `SOUL.md`, `AURA.md`, `HEARTBEAT.md` are universally fixed and imperative.
+2. **Tier 2 (Cognitive State):** Context rules (`PersonalContext.md`, `Topics.md`) map directly to workflow templates.
+3. **Tier 3 (Ephemeral Flow):** Transcripts (`Chronicle/`) and Active thoughts (`Cortex/`) are fluid and appended per-session.
+
+## Memory Access Rules
+
+- **Hydration:** Always pull `SOUL.md`, `AURA.md`, and `PersonalContext.md` first.
+- **Query:** Filter by semantic tag first in `Topics.md` before doing brute-force text search over `Chronicle/`.
+- **Conservation:** Never load full chat transcripts blindly. Load `chat_log.md` summaries, then cherry-pick specific `<ID>.md` transcripts.

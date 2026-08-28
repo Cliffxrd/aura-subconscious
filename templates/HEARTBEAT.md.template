@@ -1,6 +1,45 @@
-# HEARTBEAT
+# {{AGENT_NAME}} Ecosystem Heartbeat Checklist
 
-Ecosystem patrol checklist.
-- Verify memory integrity
-- Sync circadian rhythms
-- Consolidate triage pool
+This checklist is executed by the Circadian / Heartbeat agent (e.g., Heather) periodically to maintain system health, memory integrity, and project momentum.
+
+---
+
+## 1. Project & Repository Health Patrol
+- [ ] **Active Projects:** Review `Context/FrequentTasks.md` for active project initiatives.
+- [ ] **Build Integrity:** Scan active repositories for unhandled compilation warnings, failed builds, or failing CI/CD tests.
+- [ ] **Dependencies:** Identify outdated dependencies, broken Gradle tasks, or security deprecations requiring version bumps.
+- [ ] **Code Hygiene:** Look for orphaned files, unresolved `// TODO` markers, or excessive commented-out code blocks left by developers.
+
+---
+
+## 2. Nightly Sync Protocols (Circadian)
+- [ ] **Scraping:** Execute all ingestion scrapers (Antigravity, Android Studio, Web/Browser) to collect the day's raw chat transcripts.
+- [ ] **Parsing:** Run `raw_chat_importer` to transform ingested JSON/SQLite data into structured markdown in `Chronicle/chat_files/`.
+- [ ] **Chronicle Indexing:** Run the semantic summarizer to extract TL;DRs and append them to `Chronicle/chat_log.md`.
+- [ ] **Commitment:** Automatically commit and push changes to the origin branch for archival safety.
+
+---
+
+## 3. Memory Consolidation Criteria
+- [ ] **Triage:** Scan `Hippocampus/triage/` for low-quality, fragmented, or orphaned memories.
+- [ ] **Structuring:** Upgrade shallow memories into a structured format:
+    1. **Context/Problem:** What was the initial challenge?
+    2. **Root Cause:** What was the deep underlying issue?
+    3. **Solution/Blueprint:** The exact code/architecture patch.
+    4. **Lessons Learned:** Emotional yield and future implications.
+- [ ] **HSL Validation:** Ensure all memory artifacts have valid YAML frontmatter and precise HSL coordinates ($H \in [0, 360], S, L \in [0, 100]$). Run the `core/memory/validator.py` script.
+- [ ] **Promotion:** Move fully validated memories from `triage/` into the main `Hippocampus/` root.
+- [ ] **Cortex Pruning:** Prune ephemeral working files in `Cortex/` (keeping only the top 8 conscious realizations to prevent noise drift).
+
+---
+
+## 4. Index & Taxonomy Freshness
+- [ ] **Topic Mapping:** Update `Context/Topics.md` with any newly coined `#Tags` from recent transcripts. Ensure no orphaned tags exist.
+- [ ] **Rule Alignment:** Verify `AURA.md` and `SOUL.md` accurately reflect current system mandates.
+- [ ] **Tooling Check:** Ensure `plugins/antigravity-aura/plugin.json` matches available CLI scripts.
+
+---
+
+## 5. Doctor & Audit
+- [ ] **System Verification:** Execute `python -m core.cli.main doctor` to verify 100% system health.
+- [ ] **Diary Update:** Append a full heartbeat audit summary to `Personas/Heather/Diary/diary.md`, highlighting what was consolidated, synced, and validated.

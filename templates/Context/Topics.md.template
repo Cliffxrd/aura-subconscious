@@ -1,5 +1,37 @@
-# Topics
+# Semantic Topics Index
 
-Tag-to-Chat index mapping for fast memory retrieval.
-- #Android: [Chat IDs]
-- #Python: [Chat IDs]
+This document maps conceptual `#Tags` and specific domains to the historical Chat IDs and memory files where those topics were heavily discussed, resolved, or architected. Agents use this index to perform targeted, token-efficient memory retrieval rather than brute-forcing the entire `Chronicle/`.
+
+---
+
+## 📱 Mobile & UI
+* **#Android:** `[AG012]`, `[AG045]`, `[CR002]`
+* **#Kotlin:** `[XG005]`, `[AG012]`, `[AG099]`
+* **#Compose:** `[AG045]`, `[CL021]`, `[AG112]`
+* **#KMP (Kotlin Multiplatform):** `[AG077]`, `[CR014]`
+* **#Glassmorphism:** `[CR033]`, `[AG156]`
+* **#AdaptiveUI:** `[AG120]`, `[AG121]`
+
+## ⚙️ Backend & Architecture
+* **#Firebase:** `[XG022]`, `[AG088]`
+* **#PostgreSQL:** `[CL045]`
+* **#CleanArchitecture:** `[AG012]`, `[AG112]`, `[XG099]`
+* **#UDF (Unidirectional Data Flow):** `[AG112]`
+
+## 🧠 AI & Agentic Systems
+* **#Antigravity:** `[AG001]`, `[XG019]`, `[AG400]`
+* **#AuraMind:** `[AG400]`, `[MEM_001]`, `[MEM_098]`
+* **#MCP (Model Context Protocol):** `[CL055]`, `[CR009]`
+* **#PromptEngineering:** `[XG012]`
+
+## 🎭 Philosophical & Behavioral
+* **#AlanWatts:** `[MEM_047]`, `[MEM_061]`
+* **#Symbiosis:** `[AG400]`
+
+---
+
+## Instructions for Agents
+
+1. **Tag Discovery:** If the user introduces a new major technology, architectural pattern, or deep philosophical concept, append a new `#Tag` to this list.
+2. **Indexing:** When a session concludes that heavily features a specific topic, ensure the Heartbeat agent appends the new `Chat ID` to the relevant tag row.
+3. **Retrieval:** When tasked with a problem in a specific domain, cross-reference this list to find the historical chats that contain the established conventions for that domain.

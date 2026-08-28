@@ -1,6 +1,36 @@
 {
   "name": "antigravity-aura",
   "version": "1.0.0",
-  "description": "AURA Mind Integration for Google Antigravity",
-  "author": "Cliffxrd"
+  "description": "Integrates the Aura Collective Mind architecture into Antigravity, providing persistent cross-session memory, HSL emotional routing, and circadian lifecycle hooks.",
+  "author": "Clifford",
+  "license": "MIT",
+  "permissions": [
+    "read_workspace",
+    "write_workspace",
+    "run_commands",
+    "mcp_access"
+  ],
+  "rules": [
+    {
+      "name": "aura_integration",
+      "path": "rules/aura_integration.md",
+      "description": "Global rule enforcing Aura Mind hydration, HSL formatting, and memory usage."
+    }
+  ],
+  "skills": [
+    {
+      "name": "aura-subconscious",
+      "path": "skills/aura-subconscious",
+      "description": "Skill for querying, validating, and committing memories to the Aura Hippocampus."
+    },
+    {
+      "name": "chat-scraper",
+      "path": "skills/chat-scraper",
+      "description": "Automated workflow for scraping and ingesting external Gemini web chats."
+    }
+  ],
+  "hooks": {
+    "on_session_start": "python -m core.cli.main sync --mode=startup",
+    "on_session_end": "python -m core.cli.main sync --mode=shutdown"
+  }
 }
