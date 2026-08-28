@@ -1,0 +1,33 @@
+name: "💡 Feature Request & Architectural Proposal"
+description: Propose a new capability, platform scraper, cognitive region, or memory vector enhancement
+title: "[FEATURE]: "
+labels: ["enhancement", "proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We welcome architectural proposals! AURA thrives on symbiotic co-evolution.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Is your feature request related to a problem?
+      description: A clear and concise description of what the friction or limitation is.
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Describe the Solution You'd Like
+      description: A clear description of how the new feature or CLI command should work.
+    validations:
+      required: true
+  - type: textarea
+    id: cognitive-mapping
+    attributes:
+      label: Neuro-Cognitive Mapping
+      description: Which brain region (Cortex, Hippocampus, Amygdala, Circadian, Chronicle) or Persona does this touch?
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Any alternative solutions or workarounds you have evaluated.

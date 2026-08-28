@@ -1,0 +1,45 @@
+name: "🧠 Universal Memory Contribution"
+description: Submit a curated engineering memory for inclusion in Extras/starter_memories/
+title: "[MEMORY]: "
+labels: ["memory-pack", "starter-memories"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Contribute a universal, sanitized engineering lesson or architecture pattern to help other developers' agents compound knowledge!
+  - type: input
+    id: memory-title
+    attributes:
+      label: Memory Title
+      description: Descriptive title of the architectural lesson or defect fix.
+      placeholder: "e.g., Jetpack Compose UDF State Hoisting Best Practices"
+    validations:
+      required: true
+  - type: dropdown
+    id: classification
+    attributes:
+      label: Memory Classification
+      options:
+        - "Type.BestPractice"
+        - "Type.DefectFix"
+        - "Type.ArchitecturalMilestone"
+        - "Type.PerformanceOptimization"
+        - "Type.SecurityMandate"
+    validations:
+      required: true
+  - type: input
+    id: hsl
+    attributes:
+      label: HSL Emotional Vector
+      description: Recommended HSL coordinate [H (0-360), S% (0-100), L% (0-100)]
+      placeholder: "e.g., [45, 90, 50]"
+    validations:
+      required: true
+  - type: textarea
+    id: memory-body
+    attributes:
+      label: Full Memory Markdown Content
+      description: Paste the structured markdown containing Summary, Interaction Context, and Core Lessons.
+      render: markdown
+    validations:
+      required: true
