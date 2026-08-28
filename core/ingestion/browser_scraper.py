@@ -1,3 +1,7 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 Cliffxrd (Clifford Hattingh)
+# AURA: Agentic Unified Recollection Archive
+
 import asyncio
 import logging
 from typing import Dict, Any, Optional

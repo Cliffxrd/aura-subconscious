@@ -1,3 +1,9 @@
+---
+schema_version: "1.0.0"
+author: "Cliffxrd"
+license: "MIT"
+---
+
 # Frequent Tasks & Workflows
 
 This document acts as an index of the most common repetitive tasks and architectural workflows executed by {{AGENT_NAME}}. It maps task types to the definitive Chat IDs or `workflows/*.md` blueprints that contain the "gold standard" execution pattern.

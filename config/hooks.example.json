@@ -21,5 +21,6 @@
   "settings": {
     "timeout_seconds": 300,
     "stop_on_failure": true
-  }
+  },
+  "schema_version": "1.0.0"
 }

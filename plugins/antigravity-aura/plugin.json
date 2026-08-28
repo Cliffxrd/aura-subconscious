@@ -32,5 +32,6 @@
   "hooks": {
     "on_session_start": "python -m core.cli.main sync --mode=startup",
     "on_session_end": "python -m core.cli.main sync --mode=shutdown"
-  }
+  },
+  "schema_version": "1.0.0"
 }

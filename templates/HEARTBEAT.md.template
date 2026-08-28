@@ -1,3 +1,9 @@
+---
+schema_version: "1.0.0"
+author: "Cliffxrd"
+license: "MIT"
+---
+
 # {{AGENT_NAME}} Ecosystem Heartbeat Checklist
 
 This checklist is executed by the Circadian / Heartbeat agent (e.g., Heather) periodically to maintain system health, memory integrity, and project momentum.

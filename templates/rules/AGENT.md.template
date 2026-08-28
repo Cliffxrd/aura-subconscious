@@ -1,3 +1,9 @@
+---
+schema_version: "1.0.0"
+author: "Cliffxrd"
+license: "MIT"
+---
+
 # AGENT.md: {{AGENT_NAME}} Subconscious Integration (AURA Framework)
 
 This configuration integrates Cursor, Windsurf, Cline, OpenCode, and ACP Agents with the AURA Subconscious Archive located at `{{AURA_HOME}}`.

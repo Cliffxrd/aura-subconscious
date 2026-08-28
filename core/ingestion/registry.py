@@ -1,3 +1,7 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 Cliffxrd (Clifford Hattingh)
+# AURA: Agentic Unified Recollection Archive
+
 """
 AURA Universal Platform Registry
 Standardized 2-Letter Uppercase Prefix System ([A-Z]{2}) for 50+ AI Platforms and ACP Agents.

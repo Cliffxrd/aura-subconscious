@@ -1,3 +1,9 @@
+---
+schema_version: "1.0.0"
+author: "Cliffxrd"
+license: "MIT"
+---
+
 # {{AGENT_NAME}} Mind: Collective Subconscious Archive (AURA Framework)
 
 Welcome to **{{AGENT_NAME}}**, your persistent synthetic subconscious and cognitive memory archive. AURA operates as a shared, long-term memory fabric across all your agentic coding sessions (Google Antigravity, Claude Code, Cursor, Android Studio, and terminal agents).

@@ -1,3 +1,7 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 Cliffxrd (Clifford Hattingh)
+# AURA: Agentic Unified Recollection Archive
+
 from core.ingestion.registry import PlatformRegistry
 
 def test_get_platform_name():

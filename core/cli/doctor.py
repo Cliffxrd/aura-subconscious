@@ -1,3 +1,7 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 Cliffxrd (Clifford Hattingh)
+# AURA: Agentic Unified Recollection Archive
+
 import os
 import sys
 from pathlib import Path
@@ -61,6 +65,10 @@ class AuraDoctor:
         from core.ingestion.registry import PlatformRegistry
         prefixes = PlatformRegistry.list_all_prefixes()
         print(f"\n[CHECK] 4. Universal Platform Registry: [PASS] {len(prefixes)} AI Platforms Loaded.")
+        
+        # 5. Check Framework Version & Telemetry SSOT
+        from core.__version__ import __version__, __author__, __license__
+        print(f"\n[CHECK] 5. Framework Telemetry & SSOT: [PASS] v{__version__} ({__license__}) by {__author__}")
         
         print("\n" + "="*50)
         if all_passed:

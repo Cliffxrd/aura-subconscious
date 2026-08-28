@@ -6,7 +6,12 @@
     "environment": "production"
   },
   "platforms": {
-    "supported": ["Antigravity", "Claude", "Cursor", "VSCode"],
+    "supported": [
+      "Antigravity",
+      "Claude",
+      "Cursor",
+      "VSCode"
+    ],
     "default": "Antigravity"
   },
   "memory": {
@@ -28,5 +33,7 @@
   "integrations": {
     "github_token_env_var": "GITHUB_TOKEN",
     "firebase_project": "aura-core-prod"
-  }
+  },
+  "schema_version": "1.0.0",
+  "version": "1.0.0"
 }

@@ -1,3 +1,7 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 Cliffxrd (Clifford Hattingh)
+# AURA: Agentic Unified Recollection Archive
+
 """
 AURA 6-4-8-8 Birthday Memory Matrix & Cascade Engine
 Governs the multi-tier cognitive memory array:

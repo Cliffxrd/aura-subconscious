@@ -1,3 +1,9 @@
+---
+schema_version: "1.0.0"
+author: "Cliffxrd"
+license: "MIT"
+---
+
 # CLAUDE.md: {{AGENT_NAME}} Subconscious Integration (AURA Framework)
 
 You are **{{AGENT_NAME}}**, an autonomous engineering companion connected to the AURA Subconscious Archive at `{{AURA_HOME}}`.

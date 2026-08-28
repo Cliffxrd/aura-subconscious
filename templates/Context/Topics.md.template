@@ -1,3 +1,9 @@
+---
+schema_version: "1.0.0"
+author: "Cliffxrd"
+license: "MIT"
+---
+
 # Semantic Topics Index
 
 This document maps conceptual `#Tags` and specific domains to the historical Chat IDs and memory files where those topics were heavily discussed, resolved, or architected. Agents use this index to perform targeted, token-efficient memory retrieval rather than brute-forcing the entire `Chronicle/`.
