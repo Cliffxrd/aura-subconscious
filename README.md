@@ -71,7 +71,7 @@ aura/
 
 ## ⚡ The 4-6-8-8 Resonance Memory Matrix
 
-AURA’s working context is governed by a 4-tier synchronized waterfall allocation (codified around a signature harmonic constant special to creator `Cliffxrd`):
+AURA’s working context is governed by a 4-tier synchronized waterfall allocation (codified around a signature harmonic constant special to creator [Cliffxrd](https://github.com/Cliffxrd)):
 
 ```
 ┌────────────────────────────────────────────────────────┐
