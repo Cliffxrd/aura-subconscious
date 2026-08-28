@@ -240,10 +240,43 @@ Crystallized Memory     Semantic #Tag Mapping    Standard Workflow Blueprints
 | **`WS`** | Windsurf (Codeium) | Agentic Flow IDE | Cascade session state & diff history |
 | **`VO`** | v0 by Vercel | Agentic UI Builder | Component sandbox & prompt-tree |
 
-To import external chat dumps, drop them into `documents/rawchats/` and run:
+### 🚀 How to Ingest Your Chats (Step-by-Step)
+
+AURA includes a dedicated, standalone **Chat Scraping & Ingestion Wizard** that runs independently of your initial setup:
+
+#### Step 1: Initialize Your Archive
+Run `aura init` (which automatically creates `~/.aura/documents/rawchats/`), or manually create the folder `~/.aura/documents/rawchats/`. Both work identically.
+
+#### Step 2: Drop Your Historical Chat Exports
+Copy your chat exports into `~/.aura/documents/rawchats/`:
+* **OpenAI ChatGPT**: Drop `conversations.json` or individual markdown files (`CG001.md`, `CG002.md`).
+* **Anthropic Claude**: Drop your account JSON export or markdown files (`CL001.json`, `CL002.md`).
+* **DeepSeek / Cursor / Windsurf**: Drop `.json` or `.md` transcripts.
+
+#### Step 3: Run the Ingestion Wizard
+Launch the interactive scraper:
 ```bash
-aura import
+aura scrape
+# (or 'aura import')
 ```
+
+You can also run direct non-interactive ingestion flags:
+```bash
+# Ingest all files dropped in ~/.aura/documents/rawchats/
+aura scrape --source raw
+
+# Scrape local Google Antigravity session transcripts
+aura scrape --source antigravity
+
+# Scrape local Android Studio Gemini chat database (gemini_chat.db)
+aura scrape --source android-studio
+
+# Auto-discover and ingest all available local transcripts
+aura scrape --source all
+```
+
+---
+
 
 <details>
 <summary><b>🔍 View Full 52-Platform 2-Letter Taxonomy Registry</b></summary>

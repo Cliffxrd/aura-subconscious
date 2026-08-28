@@ -108,10 +108,29 @@ class AuraWizard:
             "Context",
             "Personas",
             "Heritage",
-            "config"
+            "config",
+            "documents/rawchats"
         ]
         for d in dirs:
             (self.target_home / d).mkdir(parents=True, exist_ok=True)
+            
+        rawchats_readme = self.target_home / "documents" / "rawchats" / "README.md"
+        if not rawchats_readme.exists():
+            rawchats_readme.write_text(
+                "# Raw Chat Drop Directory\n\n"
+                "Drop your external chat exports here to ingest them into your AURA Subconscious Mind:\n"
+                "- ChatGPT exports (`conversations.json` or markdown files named `CG001.md`, etc.)\n"
+                "- Claude exports (`CL001.json`, `CL002.md`, etc.)\n"
+                "- DeepSeek (`DS001.json`), Cursor (`CU001.json`), or other AI transcripts.\n\n"
+                "To ingest all files dropped here, run:\n"
+                "```bash\n"
+                "aura scrape\n"
+                "# or\n"
+                "aura import\n"
+                "```\n",
+                encoding="utf-8"
+            )
+
             
     def hydrate_templates(self):
         """Copy and populate templates into user instance."""
