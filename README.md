@@ -307,6 +307,46 @@ aura import
 
 ---
 
+## 🔒 Data Sovereignty, Zero-Server Architecture & Privacy
+
+AURA is engineered on the foundational principle of **Absolute Local Data Sovereignty**:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│ 🏠 YOUR LOCAL MACHINE (Sovereign Data Storage)                  │
+│                                                                 │
+│ ~/.aura/ (or $AURA_HOME)                                        │
+│ ├── Hippocampus/  (Your private engineering memories & HSL tags)│
+│ ├── Chronicle/    (Your scraped chat logs & raw transcripts)    │
+│ ├── Context/      (Your personal tech stack & project context)  │
+│ └── Personas/     (Your customized agent traits & diaries)      │
+└─────────────────────────────────────────────────────────────────┘
+      ▲                        ▲                         ▲
+      │ (Private Git Sync)     │ (Cloud Sync)            │ (Local P2P)
+┌─────┴───────────────┐  ┌─────┴───────────────┐   ┌─────┴───────────────┐
+│ Private GitHub Repo │  │ Dropbox / OneDrive  │   │ Syncthing / NAS     │
+│ (Encrypted / Secret)│  │ / Google Drive      │   │ (Local Offline)     │
+└─────────────────────┘  └─────────────────────┘   └─────────────────────┘
+```
+
+### 1. 100% Local-First Storage
+All subconscious memories, prompt contexts, ingested chat transcripts, and agent diary logs reside strictly on your local filesystem under `~/.aura/` (or your custom `$AURA_HOME`).
+
+### 2. Zero Central Servers & Zero Telemetry
+AURA operates entirely client-side. There are **zero central servers, zero cloud databases, zero telemetry beacons, and zero tracking analytics**. We never see, touch, transmit, process, or store your private files or conversation data.
+
+### 3. Multi-Device Sync (Your Choice)
+Because `~/.aura/` is a clean, decoupled directory, you have total freedom to sync your persistent AI mind across your laptop, desktop, or workstation using any tool you prefer:
+* **Private Git Repository (Recommended)**: Run `git init` inside `~/.aura` and push to a **private** GitHub, GitLab, or self-hosted Gitea repository.
+* **Cloud Storage Sync**: Symlink or point `$AURA_HOME` to Dropbox, Google Drive, OneDrive, or iCloud Drive.
+* **Local Peer-to-Peer**: Sync via Syncthing, Resilio Sync, or a local network NAS.
+
+### 4. 🛡️ Security & Privacy Responsibility Notice
+> [!IMPORTANT]
+> **Data Responsibility**: Because AURA is a decentralized, local-first framework with zero server-side oversight, securing your local filesystem, setting appropriate permissions on your private Git/cloud backups, and safeguarding sensitive API tokens or proprietary codebase context is solely the responsibility of the user. Never publish your personal `~/.aura` archive to a public GitHub repository.
+
+---
+
 ## 👥 Archetypal Subagent Personas
 
 AURA ships with 5 specialized subagent personas defined under `Personas/`:

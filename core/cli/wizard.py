@@ -64,11 +64,38 @@ class AuraWizard:
         # 8. Deploy IDE Root Rules
         self.deploy_rules()
         
+        # 9. Optional Private Git Synchronization (Skippable)
+        if interactive:
+            print("\n? Multi-Device Memory Sync & Private Backup (Optional):")
+            print(f"  AURA stores all memories 100% locally in: {self.target_home}")
+            print("  There are zero central servers. You can optionally initialize Git to track your private archive.")
+            git_choice = input("  Initialize Git inside ~/.aura for private version control? [y/N]: ").strip().lower()
+            if git_choice in ['y', 'yes']:
+                self.init_git_repo()
+        
         print("\n" + "="*60)
         print(f"✨ AURA SUCCESSFULLY INITIALIZED at: {self.target_home}")
         print(f"   Companion Name: {self.companion_name}")
         print(f"   Run `aura doctor` to verify system health.")
         print("="*60 + "\n")
+        
+    def init_git_repo(self):
+        """Optionally initialize a Git repository inside the user's AURA_HOME."""
+        try:
+            import subprocess
+            if not (self.target_home / ".git").exists():
+                subprocess.run(["git", "init"], cwd=str(self.target_home), check=True, capture_output=True)
+                user_gitignore = self.target_home / ".gitignore"
+                if not user_gitignore.exists():
+                    user_gitignore.write_text("Cortex/current_thoughts.md\n__pycache__/\n*.tmp\n", encoding="utf-8")
+                print(f"  [PASS] Initialized private Git repository in: {self.target_home}")
+                print("  💡 Tip: Link your own private GitHub remote to sync memories across devices:")
+                print("       cd ~/.aura && git add . && git commit -m 'feat: initial memory archive'")
+            else:
+                print(f"  [INFO] Git repository already exists in: {self.target_home}")
+        except Exception as e:
+            print(f"  [WARN] Could not initialize Git in {self.target_home}: {e}")
+
         
     def scaffold_directories(self):
         """Create biological brain structure."""
