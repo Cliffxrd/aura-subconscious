@@ -3,7 +3,7 @@
 # AURA: Agentic Unified Recollection Archive
 
 """
-AURA 6-4-8-8 Birthday Memory Matrix & Cascade Engine
+AURA 6-4-8-8 harmonic signature Memory Matrix & Cascade Engine
 Governs the multi-tier cognitive memory array:
 - Tier 1: Requested Directives (Max 4 slots)
 - Tier 2: Recent Episodic Memories (Top 6 slots)
@@ -17,7 +17,7 @@ from typing import List, Dict, Any, Optional, Set, Tuple
 from core.memory.hsl_vector import HSLVector
 
 class CascadeEngine:
-    """6-4-8-8 Birthday Matrix cascade deduplication, slot borrowing, and multi-tenant isolation."""
+    """4-6-8-8 Memory Matrix cascade deduplication, slot borrowing, and multi-tenant isolation."""
     
     TIER_1_MAX = 4  # Requested Directives
     TIER_2_MAX = 6  # Recent Episodic

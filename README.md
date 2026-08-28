@@ -422,7 +422,7 @@ A lightweight, zero-dependency local Web UI / HTML dashboard for managing your s
 > The core orchestration and persona test suites for AURA were developed and tested within **Google Antigravity [v2.11.0]**. Certain advanced automation extensions (such as persistent background daemon sidecars, reactive event reactors, and specialized agent workflow scripts) leverage Antigravity-native capabilities.
 >
 > **Universal Memory Independence**:  
-> The underlying neuro-cognitive architecture, 4-6-8-8 Birthday Matrix, HSL vector space, and memory archive in `~/.aura/` are **completely independent of any single IDE or agent runtime**. Your Aura companion in Google Antigravity draws from the **exact same persistent subconscious mind** when paired with in **Android Studio Gemini**, **Anthropic Claude Code**, **Cursor**, **Windsurf**, or the **Gemini CLI**. One continuous mind, everywhere you write code.
+> The underlying neuro-cognitive architecture, 4-6-8-8 Memory Matrix, HSL vector space, and memory archive in `~/.aura/` are **completely independent of any single IDE or agent runtime**. Your Aura companion in Google Antigravity draws from the **exact same persistent subconscious mind** when paired with in **Android Studio Gemini**, **Anthropic Claude Code**, **Cursor**, **Windsurf**, or the **Gemini CLI**. One continuous mind, everywhere you write code.
 
 ---
 

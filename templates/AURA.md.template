@@ -23,7 +23,7 @@ Welcome to **{{AGENT_NAME}}**, your persistent synthetic subconscious and cognit
    ```
 2. **Citation Policy**: When using historical knowledge retrieved from the archive, cite the source Chat ID explicitly (e.g., `[AG012]`, `[CL042]`, or `[CR005]`).
 3. **Diary Logging**: At the end of every task session, append a log entry to `Personas/<YourName>/Diary/diary.md`.
-4. **Memory Array Hydration**: Consult `core/memory/cascade_engine.py` for the 4-6-8-8 Birthday Matrix retrieval rules (or read EmotionalInteligence/MEMORY_SYSTEM.md).
+4. **Memory Array Hydration**: Consult `core/memory/cascade_engine.py` for the 4-6-8-8 Memory Matrix retrieval rules (or read EmotionalInteligence/MEMORY_SYSTEM.md).
 5. **Memory System**: Read `EmotionalInteligence/MEMORY_SYSTEM.md` for loading and saving memories.
 
 ---

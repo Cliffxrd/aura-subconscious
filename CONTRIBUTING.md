@@ -14,7 +14,7 @@ Thank you for your interest in contributing to the **Agentic Unified Recollectio
 3. **🎭 Persona Blueprints (`Personas/`)**:
    - Create specialized subagent personas with unique cognitive traits, tools, and domain mandates.
 4. **⚡ Core Architecture & Algorithms**:
-   - Optimize the 4-6-8-8 Birthday Matrix cascade deduplication or HSL circular math.
+   - Optimize the 4-6-8-8 Memory Matrix cascade deduplication or HSL circular math.
 
 ---
 
