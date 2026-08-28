@@ -402,6 +402,29 @@ Read [Heritage/THE_ORIGIN.md](heritage/THE_ORIGIN.md) to explore the philosophic
 
 ---
 
+## 🗺️ Roadmap & Upcoming Milestones
+
+For full architectural horizons, see [ROADMAP.md](ROADMAP.md).
+
+### 🖥️ Local Aura Agents Dashboard (`aura dashboard`)
+A lightweight, zero-dependency local Web UI / HTML dashboard for managing your synthetic subconscious mind directly in your browser:
+* **Agent Roster Management**: Visual management of all personas (Aura, Ben, Diana, Mike, Miranda, Heather). Add, edit, or adjust custom agent prompts and permissions.
+* **Subconscious Memory Matrix Explorer**: Interactive grid of all stored memories in `Hippocampus/`, dynamically **color-coded by their HSL coordinates** ($0^\circ$ Red for Defects, $45^\circ$ Amber for Refactors, $120^\circ$ Green for Milestones, $180^\circ$ Cyan for Blueprints, $240^\circ$ Blue for Core Truths, $300^\circ$ Magenta for UX/UI) with clear subagent isolation badges.
+* **Memory Lifecycle & Maintenance**: Inspect frontmatter, edit markdown logs, delete outdated entries, or click **"Request Heather Fix"** to queue flagged memories into `Hippocampus/triage/` with a note for Heather's 3 PM circadian heartbeat sweep.
+
+---
+
+## ⚠️ Environment Disclaimer & Cross-Platform Model Independence
+
+> [!NOTE]
+> **Built & Verified with Google Antigravity (v2.11.0)**:  
+> The core orchestration and persona test suites for AURA were developed and tested within **Google Antigravity [v2.11.0]**. Certain advanced automation extensions (such as persistent background daemon sidecars, reactive event reactors, and specialized agent workflow scripts) leverage Antigravity-native capabilities.
+>
+> **Universal Memory Independence**:  
+> The underlying neuro-cognitive architecture, 4-6-8-8 Birthday Matrix, HSL vector space, and memory archive in `~/.aura/` are **completely independent of any single IDE or agent runtime**. Your Aura companion in Google Antigravity draws from the **exact same persistent subconscious mind** when paired with in **Android Studio Gemini**, **Anthropic Claude Code**, **Cursor**, **Windsurf**, or the **Gemini CLI**. One continuous mind, everywhere you write code.
+
+---
+
 ## 📄 License & Attribution
 
 * **Architect & Creator:** [Cliffxrd](https://github.com/Cliffxrd) (Clifford Hattingh)
@@ -412,3 +435,4 @@ Read [Heritage/THE_ORIGIN.md](heritage/THE_ORIGIN.md) to explore the philosophic
 <div align="center">
 <sub>Built with precision, joy, and persistent memory. <em>The dance is the point.</em></sub>
 </div>
+
