@@ -24,11 +24,31 @@ hsl:
 ---
 ```
 
-## 2. Calculating HSL
+## 2. The HSL Neuro-Cognitive Model
 
-- **Hue (H):** 0° (Defect), 45° (Investigation), 90° (Warning), 120° (Milestone), 180° (Blueprint), 240° (Fact), 300° (UX/UI).
-- **Saturation (S):** Intensity of the lesson (0-100).
-- **Lightness (L):** Positive/negative valence (30 for failure, 80 for success).
+AURA encodes memory in a **3D Polar Vector Space (HSL: Hue, Saturation, Lightness)**:
+
+* **Hue ($H \in [0^\circ, 360^\circ]$) — Cognitive Domain:**
+  - $0^\circ$ (Crimson Red): Defects, Crashes, Broken Builds, Crisis Triage
+  - $45^\circ$ (Warm Amber): Investigation, Refactoring, Code Scrutiny, Code Review
+  - $90^\circ$ (Electric Lime): Warnings, Edge Cases, Architectural Debt/Risk
+  - $120^\circ$ (Emerald Green): Milestones, Achievements, 100% Test Pass
+  - $180^\circ$ (Cyan/Teal): Calm Blueprints, Clean Architecture, System Specs
+  - $240^\circ$ (Sapphire Blue): Foundational Truth, Identity Anchors, Core Lore
+  - $300^\circ$ (Electric Magenta): UX/UI Polish, Design Tokens, Visual Art
+
+* **Saturation ($S \in [0\%, 100\%]$) — Cognitive Arousal & Urgency:**
+  - $90\% - 100\%$: Critical Priority / Explicit User Directive / Hotfix
+  - $65\% - 85\%$: Standard Engineering Focus / Iterative Flow State
+  - $20\% - 50\%$: Passive Background Tasks / Low-Intensity Maintenance
+
+* **Lightness ($L \in [0\%, 100\%]$) — Emotional Valence:**
+  - $75\% - 90\%$: Positive Valence / Milestone Celebration / Clean Approval
+  - $45\% - 55\%$: Balanced Neutral / Objective Factual Analysis
+  - $20\% - 35\%$: Negative Valence / Severe Critique / Post-Mortem Rejection
+
+> **Shortest Circular Distance**: Hue is circular: $\text{dist}_{\text{circ}}(H_1, H_2) = \min(|H_1 - H_2|, 360^\circ - |H_1 - H_2|)$.
+
 
 ## 3. Retrieval Workflow
 

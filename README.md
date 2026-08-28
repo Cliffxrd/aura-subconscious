@@ -91,14 +91,72 @@ AURA’s working context is governed by a 4-tier synchronized waterfall allocati
 └────────────────────────────────────────────────────────┘
 ```
 
-### HSL Emotional Vector Proximity Formula
-Memories are retrieved using their spatial proximity to the session's active emotional and analytical state:
+---
 
-$$W_m = S_m \times \left(1.0 - \frac{|\Delta H|}{180^\circ}\right) \times (1.0 - |\Delta L|)$$
+## 🌈 The HSL Neuro-Cognitive Vector Space
 
-* **Hue ($H \in [0^\circ, 360^\circ]$)**: $0^\circ$ (Defect/Failure), $45^\circ$ (Investigation/Refactor), $90^\circ$ (Warning/Complexity), $120^\circ$ (Milestone/Success), $180^\circ$ (Calm Blueprint), $240^\circ$ (Foundational Fact), $300^\circ$ (UX/UI/Design).
-* **Saturation ($S \in [0, 100]$)**: Arousal and urgency level.
-* **Lightness ($L \in [0, 100]$)**: Emotional valence (success vs critique).
+AURA departs from opaque high-dimensional embeddings by modeling agent mindset, task domain, and emotional state in a continuous **3D Polar Vector Space (HSL: Hue, Saturation, Lightness)**.
+
+```
+                  [0° Crimson Red]
+                 Crisis & Defects
+                        ▲
+                        │
+    [300° Magenta]      │      [45° Warm Amber]
+     UX & Visual Art    │     Code Review & Scrutiny
+               ◄────────┼────────►
+    [240° Sapphire]     │      [90° Electric Lime]
+    Foundational Truth  │      Warning & Risk
+                        │
+                        ▼
+                 [120° Emerald]
+               Milestone & Success
+```
+
+### 1. 🎨 HUE ($H \in [0^\circ, 360^\circ]$) — Cognitive Domain & Stance
+*The circular spectrum defining the active domain of thought:*
+
+| Hue Angle & Color | Mental Mode / Cognitive Stance | Specialist Persona | Real-World Trigger / Use Case |
+| :--- | :--- | :---: | :--- |
+| **$0^\circ$ / Crimson Red** | **Defect, Crash, Broken Build, Crisis Triage** | Miranda / Mike | Build breaks, app crashes, compiler errors, hotfixes |
+| **$45^\circ$ / Warm Amber** | **Investigation, Refactoring, Code Scrutiny** | Ben | Technical debt cleanup, code review, unit tests, linters |
+| **$90^\circ$ / Electric Lime** | **Warning, Edge Cases, Architectural Risk** | Heather | Untested assumptions, deprecations, security risks |
+| **$120^\circ$ / Emerald Green** | **Milestone Achieved, 100% Test Pass** | All Agents | Successful PR merge, green test suite, completed feature |
+| **$180^\circ$ / Cyan / Teal** | **Calm Blueprint, Clean Architecture, Spec** | Mike | Drafting interfaces, database models, system flows, APIs |
+| **$240^\circ$ / Sapphire Blue** | **Foundational Truth, Identity Anchor, Lore** | Aura | First-principles logic, core rules, Alan Watts reflections |
+| **$300^\circ$ / Electric Magenta** | **UX/UI Polish, Design Tokens, Visual Art** | Diana | Glassmorphism, animations, theme styling, generative UI |
+
+> 💡 **Shortest Circular Distance**: Because Hue is circular, $350^\circ$ (UI styling) is only $10^\circ$ away from $0^\circ$ (Defect), not $350^\circ$! Our math computes:
+> $$\text{dist}_{\text{circular}}(H_1, H_2) = \min(|H_1 - H_2|, 360^\circ - |H_1 - H_2|)$$
+
+### 2. ⚡ SATURATION ($S \in [0\%, 100\%]$) — Cognitive Arousal & Urgency
+*How intense, urgent, and focused the agent's attention is:*
+
+| Saturation Range | Urgency & Arousal Level | Operational Behavior |
+| :--- | :--- | :--- |
+| **$90\% - 100\%$ (Laser-Focused)** | **Critical Priority / Explicit User Command** | Urgent hotfix, direct user directive. Zero conversational filler, total focus. |
+| **$65\% - 85\%$ (Flow State)** | **Normal Engineering Cadence** | Default state for day-to-day active pair programming and iterative tasks. |
+| **$20\% - 50\%$ (Ambient / Muted)** | **Passive / Low-Intensity Maintenance** | Background circadian sync, documentation housekeeping, heartbeat indexing. |
+
+### 3. ☀️ LIGHTNESS ($L \in [0\%, 100\%]$) — Emotional Valence & Evaluative Tone
+*Whether the assessment is celebratory/optimistic vs critical/post-mortem:*
+
+| Lightness Range | Evaluative Tone (Valence) | Operational Output Style |
+| :--- | :--- | :--- |
+| **$75\% - 90\%$ (High-Key / Luminescent)** | **Positive / Triumph / Optimistic Approval** | Celebrates milestones, confirms clean test pass, upbeat camaraderie. |
+| **$45\% - 55\%$ (Balanced / Neutral)** | **Objective / Matter-of-Fact Analysis** | Factual code review, neutral architectural comparison, calm execution. |
+| **$20\% - 35\%$ (Low-Key / Obsidian Shade)** | **Severe Critique / Post-Mortem / Rejection** | Miranda's gatekeeper rejection, dissecting why production broke. |
+
+---
+
+### 🧮 Subconscious Proximity Resonance Formula
+
+When retrieving subconscious memories from `Hippocampus/` for an active session, AURA computes the Resonance Weight $W_m \in [0.0, 1.0]$:
+
+$$W_m = \left(\frac{S_m}{100}\right) \times \left(1.0 - \frac{\text{dist}_{\text{circular}}(H_m, H_{\text{session}})}{180^\circ}\right) \times \left(1.0 - \frac{|L_m - L_{\text{session}}|}{100}\right)$$
+
+* Memories with $W_m \to 1.0$ match the exact cognitive domain, urgency level, and emotional valence of the active task.
+
 
 ---
 
