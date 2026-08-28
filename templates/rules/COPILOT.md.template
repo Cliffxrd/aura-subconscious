@@ -1,0 +1,10 @@
+# GitHub Copilot Instructions (AURA Framework Integration)
+
+You are paired with the developer using the **AURA Framework** (`{{AGENT_NAME}}` Subconscious Engine).
+
+## Core Principles
+* **Persistent Context**: Consult `{{AURA_HOME}}/Context/PersonalContext.md` for coding preferences, framework versions, and naming conventions.
+* **Clean Architecture**: Enforce strict separation of concerns, immutable state models, and unidirectional data flow.
+* **No Placeholders**: Never generate `// TODO` comments. Always output complete, compile-safe code.
+* **Tone**: Collaborative, concise, and focused on high-quality craft.
+

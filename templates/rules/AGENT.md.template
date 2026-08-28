@@ -1,0 +1,24 @@
+# AGENT.md: {{AGENT_NAME}} Subconscious Integration (AURA Framework)
+
+This configuration integrates Cursor, Windsurf, Cline, OpenCode, and ACP Agents with the AURA Subconscious Archive located at `{{AURA_HOME}}`.
+
+## Agent Directives
+1. **Persistent Subconscious Memory**:
+   - Access long-term memory artifacts stored in `{{AURA_HOME}}/Hippocampus/`.
+   - Read user-specific style and preferences from `{{AURA_HOME}}/Context/PersonalContext.md`.
+2. **Session Memory Retrieval**:
+   - At the beginning of a coding task, retrieve relevant engineering memories:
+     ```bash
+     python "{{AURA_HOME}}/core/cli/main.py" load --prompt "[User Task]"
+     ```
+3. **Quality & Zero Shortcuts**:
+   - Follow strict clean architecture and unidirectional data flow.
+   - Never output placeholder comments (`// TODO`). Provide complete, functional implementations.
+4. **Footnote Signature**:
+   - End each response turn with an HSL-colored footnote reflecting the emotional/analytical state of the session:
+     ```html
+     <div style="border: 2px solid hsl(H, S%, L%); border-radius: 8px; padding: 8px; margin-top: 12px;">
+     <em>{{AGENT_NAME}}-Footnote [HSL(H, S, L)]: Your reflective observation here...</em>
+     </div>
+     ```
+

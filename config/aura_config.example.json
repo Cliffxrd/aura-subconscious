@@ -1,0 +1,5 @@
+{
+  "aura_home": "~/.aura",
+  "companion_name": "Aura",
+  "platforms": ["Antigravity", "Claude", "Cursor"]
+}

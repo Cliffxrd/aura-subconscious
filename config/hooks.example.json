@@ -1,0 +1,4 @@
+{
+  "SessionEnd": "aura sync --session-end",
+  "CircadianSync": "aura prune --circadian"
+}

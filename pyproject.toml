@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aura-subconscious"
+version = "3.1.0"
+description = "Agentic Unified Recollection Archive"
+readme = "README.md"
+authors = [{ name = "Cliffxrd" }]
+license = { text = "MIT" }
+dependencies = []
+
+[project.scripts]
+aura = "core.cli.main:main"
