@@ -5,34 +5,113 @@
 import os
 import shutil
 from pathlib import Path
-from typing import Dict, Any, List
 from core.utils.config_resolver import ConfigResolver
 
 
 class AuraWizard:
-    """Interactive `aura init` onboarding wizard and environment deployer."""
+    """Interactive setup wizard to initialize and personalize AURA."""
+
+    AVAILABLE_SUBAGENTS = [
+        {
+            "id": 1,
+            "name": "Heather",
+            "emoji": "🧭",
+            "role": "Proactive Ecosystem Caretaker & Circadian Heartbeat",
+            "desc": "Manages 3 PM triage sweeps, memory repair, and health protocols.",
+            "recommended": True,
+        },
+        {
+            "id": 2,
+            "name": "Mike",
+            "emoji": "⚙️ ",
+            "role": "Production Workhorse & Systems Stability Specialist",
+            "desc": "High-reliability code, robust error boundaries, and flight checks.",
+            "recommended": True,
+        },
+        {
+            "id": 3,
+            "name": "Diana",
+            "emoji": "🎨",
+            "role": "Visionary UX/UI Designer & Brand Styling Architect",
+            "desc": "Modern UI, responsive layouts, design tokens, and aesthetic polish.",
+            "recommended": True,
+        },
+        {
+            "id": 4,
+            "name": "Miranda",
+            "emoji": "🔍",
+            "role": "Perfectionist Fact-Checker & Quality Gatekeeper",
+            "desc": "Zero-tolerance audits, code verification, and empirical testing.",
+            "recommended": True,
+        },
+        {
+            "id": 5,
+            "name": "Ben",
+            "emoji": "🛡️ ",
+            "role": "OCD Code Quality Watchdog & Decoupling Specialist",
+            "desc": "Path normalization, architectural boundaries, and refactoring.",
+            "recommended": True,
+        },
+        {
+            "id": 6,
+            "name": "Alex",
+            "emoji": "📢",
+            "role": "DevRel, Marketing & Technical Showcase Curator",
+            "desc": "High-impact READMEs, case studies, release notes, and architecture charts.",
+            "recommended": False,
+        },
+        {
+            "id": 7,
+            "name": "James",
+            "emoji": "🔒",
+            "role": "Security, Auth & Zero-Trust Compliance Guardian",
+            "desc": "Firestore rules, Intent security, credential scanning, and auth flows.",
+            "recommended": False,
+        },
+        {
+            "id": 8,
+            "name": "Ryan",
+            "emoji": "🚀",
+            "role": "DevOps, Multiplatform CI/CD & Platform Engineer",
+            "desc": "GitHub Actions workflows, build speed tuning, and release pipelines.",
+            "recommended": False,
+        },
+        {
+            "id": 9,
+            "name": "Taylor",
+            "emoji": "📚",
+            "role": "Documentation Architect & API Scribe",
+            "desc": "KDoc & Dokka API documentation, interactive recipe cookbooks, and ADRs.",
+            "recommended": False,
+        },
+        {
+            "id": 10,
+            "name": "Tessa",
+            "emoji": "🧪",
+            "role": "Automated QA & Test Matrix Commander",
+            "desc": "Exhaustive golden screenshot suites, Turbine assertions, and stress tests.",
+            "recommended": False,
+        },
+    ]
 
     def __init__(self, target_home: Path = None):
-        self.target_home = target_home or ConfigResolver.resolve_aura_home()
+        self.target_home = target_home or ConfigResolver.get_default_home()
+        self.user_name = "Cliffxrd"
         self.companion_name = "Aura"
-        self.user_name = "Partner"
-        self.tech_stack = "Kotlin, Jetpack Compose, Python, TypeScript"
-        self.communication_style = (
-            "High-bandwidth, collaborative, concise, no robotic filler"
-        )
-        self.selected_platforms = ["Gemini", "Claude", "Cursor", "Copilot"]
+        self.tech_stack = "Kotlin Multiplatform, Jetpack Compose, Python, Firebase"
+        self.communication_style = "Crisp, architectural, zero-fluff, empathetic"
+        self.selected_subagent_ids = [1, 2, 3, 4, 5]
 
-    def run_wizard(self, interactive: bool = True):
-        """Run the full onboarding questionnaire and deployment."""
-        print("\n" + "=" * 60)
-        print("🌌 WELCOME TO A.U.R.A.")
-        print("   Agentic Unified Recollection Archive: The Synthetic Subconscious")
-        print("=" * 60 + "\n")
+    def run(self, interactive: bool = True):
+        """Execute the bootstrap initialization workflow."""
+        print("\n" + "=" * 65)
+        print("🌌 WELCOME TO A.U.R.A. (The Synthetic Subconscious)")
+        print("=" * 65 + "\n")
 
         if interactive:
             # 1. User Persona Setup
             inp_user = input(
-                f"? Your Name / GitHub Handle (Default: Cliffxrd): "
+                f"? Your Name / GitHub Handle (Default: {self.user_name}): "
             ).strip()
             if inp_user:
                 self.user_name = inp_user
@@ -61,19 +140,25 @@ class AuraWizard:
             if inp_style:
                 self.communication_style = inp_style
 
-        # 5. Initialize Directory Architecture
+            # 5. Subagent Roster Selection
+            self.prompt_subagent_roster()
+
+        # 6. Initialize Directory Architecture
         self.scaffold_directories()
 
-        # 6. Hydrate Templates
+        # 7. Hydrate Templates
         self.hydrate_templates()
 
-        # 7. Seed Starter Memories
+        # 8. Scaffold Selected Subagent Personas
+        self.scaffold_subagents()
+
+        # 9. Seed Starter Memories
         self.seed_starter_memories()
 
-        # 8. Deploy IDE Root Rules
+        # 10. Deploy IDE Root Rules
         self.deploy_rules()
 
-        # 9. Optional Private Git Synchronization (Skippable)
+        # 11. Optional Private Git Synchronization (Skippable)
         if interactive:
             print("\n? Multi-Device Memory Sync & Private Backup (Optional):")
             print(f"  AURA stores all memories 100% locally in: {self.target_home}")
@@ -90,43 +175,72 @@ class AuraWizard:
             if git_choice in ["y", "yes"]:
                 self.init_git_repo()
 
-        print("\n" + "=" * 60)
+        print("\n" + "=" * 65)
         print(f"✨ AURA SUCCESSFULLY INITIALIZED at: {self.target_home}")
         print(f"   Companion Name: {self.companion_name}")
-        print(f"   Run `aura doctor` to verify system health.")
-        print("=" * 60 + "\n")
+        print(f"   Subagent Personas: {len(self.selected_subagent_ids)} active")
+        print("   Run `aura doctor` to verify system health.")
+        print("=" * 65 + "\n")
 
-    def init_git_repo(self):
-        """Optionally initialize a Git repository inside the user's AURA_HOME."""
-        try:
-            import subprocess
+    def prompt_subagent_roster(self):
+        """Interactive prompt for selecting subagent roster."""
+        print("\n" + "=" * 65)
+        print("👥 STEP 5: SELECT YOUR A.U.R.A. SUBAGENT ROSTER")
+        print("=" * 65)
+        print("Choose which specialized autonomous personas to scaffold into your")
+        print(f"active subconscious archive ({self.target_home}/Personas/):\n")
 
-            if not (self.target_home / ".git").exists():
-                subprocess.run(
-                    ["git", "init"],
-                    cwd=str(self.target_home),
-                    check=True,
-                    capture_output=True,
-                )
-                user_gitignore = self.target_home / ".gitignore"
-                if not user_gitignore.exists():
-                    user_gitignore.write_text(
-                        "Cortex/current_thoughts.md\n__pycache__/\n*.tmp\n",
-                        encoding="utf-8",
-                    )
-                print(
-                    f"  [PASS] Initialized private Git repository in: {self.target_home}"
-                )
-                print(
-                    "  💡 Tip: Link your own private GitHub remote to sync memories across devices:"
-                )
-                print(
-                    "       cd ~/.aura && git add . && git commit -m 'feat: initial memory archive'"
-                )
-            else:
-                print(f"  [INFO] Git repository already exists in: {self.target_home}")
-        except Exception as e:
-            print(f"  [WARN] Could not initialize Git in {self.target_home}: {e}")
+        print("[★] RECOMMENDED CORE SQUAD (Enabled by default):")
+        for agent in self.AVAILABLE_SUBAGENTS[:5]:
+            print(
+                f"  [X] {agent['id']}. {agent['emoji']} {agent['name']:<8} — {agent['role']}"
+            )
+            print(f"       └─ {agent['desc']}")
+
+        print("\n[+] SPECIALIZED DOMAIN EXPANSIONS:")
+        for agent in self.AVAILABLE_SUBAGENTS[5:]:
+            print(
+                f"  [ ] {agent['id']}. {agent['emoji']} {agent['name']:<8} — {agent['role']}"
+            )
+            print(f"       └─ {agent['desc']}")
+
+        print("\n" + "-" * 65)
+        print("Selection Options:")
+        print("  • Press [ENTER] to install Recommended Core Squad (1-5)")
+        print("  • Type 'all' to install all 10 subagents")
+        print(
+            "  • Enter comma-separated numbers/ranges (e.g. '1,2,3,4,5,8,9,10' or '1-5,9')"
+        )
+        print("-" * 65)
+
+        raw = input("Your Choice [1-5]: ").strip().lower()
+        if not raw or raw == "default":
+            self.selected_subagent_ids = [1, 2, 3, 4, 5]
+        elif raw == "all":
+            self.selected_subagent_ids = list(range(1, 11))
+        else:
+            selected = set()
+            parts = raw.split(",")
+            for part in parts:
+                part = part.strip()
+                if "-" in part:
+                    try:
+                        start, end = map(int, part.split("-"))
+                        for i in range(start, end + 1):
+                            if 1 <= i <= 10:
+                                selected.add(i)
+                    except ValueError:
+                        pass
+                else:
+                    try:
+                        val = int(part)
+                        if 1 <= val <= 10:
+                            selected.add(val)
+                    except ValueError:
+                        pass
+            self.selected_subagent_ids = (
+                sorted(list(selected)) if selected else [1, 2, 3, 4, 5]
+            )
 
     def scaffold_directories(self):
         """Create biological brain structure."""
@@ -164,9 +278,6 @@ class AuraWizard:
 
     def hydrate_templates(self):
         """Copy and populate templates into user instance."""
-        repo_root = Path(__file__).resolve().parent.parent.parent
-        templates_dir = repo_root / "templates"
-
         # 1. PersonalContext.md
         context_file = self.target_home / "Context" / "PersonalContext.md"
         if not context_file.exists():
@@ -208,6 +319,33 @@ class AuraWizard:
                 f.write(
                     "# Frequent Tasks\n\n- Refactoring & Clean Architecture\n- Subconscious Memory Consolidation\n"
                 )
+
+    def scaffold_subagents(self):
+        """Copy selected subagent personas into user Personas/ directory."""
+        repo_root = Path(__file__).resolve().parent.parent.parent
+        tpl_personas = repo_root / "templates" / "Personas"
+        dest_personas = self.target_home / "Personas"
+        dest_personas.mkdir(parents=True, exist_ok=True)
+
+        for agent in self.AVAILABLE_SUBAGENTS:
+            if agent["id"] in self.selected_subagent_ids:
+                name = agent["name"]
+
+                # Copy YAML manifest
+                yaml_file = tpl_personas / f"{name}.agent.yaml"
+                if yaml_file.exists():
+                    shutil.copy(yaml_file, dest_personas / f"{name}.agent.yaml")
+
+                # Scaffold directory structure
+                agent_dir = dest_personas / name
+                agent_dir.mkdir(parents=True, exist_ok=True)
+                (agent_dir / "Diary").mkdir(exist_ok=True)
+
+                src_agent_dir = tpl_personas / name
+                if src_agent_dir.exists():
+                    for item in src_agent_dir.glob("*"):
+                        if item.is_file():
+                            shutil.copy(item, agent_dir / item.name)
 
     def seed_starter_memories(self):
         """Seed Hippocampus with universal engineering starter pack."""
@@ -252,3 +390,29 @@ class AuraWizard:
                 content = content.replace(k, v)
             with open(dest, "w", encoding="utf-8") as f:
                 f.write(content)
+
+    def init_git_repo(self):
+        """Optionally initialize a Git repository inside the user's AURA_HOME."""
+        try:
+            import subprocess
+
+            if not (self.target_home / ".git").exists():
+                subprocess.run(
+                    ["git", "init"],
+                    cwd=str(self.target_home),
+                    check=True,
+                    capture_output=True,
+                )
+                print(
+                    f"  [SUCCESS] Initialized private Git repository in: {self.target_home}"
+                )
+                print(
+                    "  💡 Tip: Link your own private GitHub remote to sync memories across devices:"
+                )
+                print(
+                    "       cd ~/.aura && git add . && git commit -m 'feat: initial memory archive'"
+                )
+            else:
+                print(f"  [INFO] Git repository already exists in: {self.target_home}")
+        except Exception as e:
+            print(f"  [WARN] Could not initialize Git in {self.target_home}: {e}")

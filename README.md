@@ -383,13 +383,22 @@ Because `~/.aura/` is a clean, decoupled directory, you have total freedom to sy
 
 ## 👥 Archetypal Subagent Personas
 
-AURA ships with 5 specialized subagent personas defined under `Personas/`:
+AURA features a 10-agent modular cognitive studio, split into a **Recommended Core Squad** and **Specialized Domain Expansions**:
 
-* 🛡️ **Ben** (`Personas/Ben.agent.yaml`) — *OCD Code Quality & Clean Architecture Watchdog.*
-* 🎨 **Diana** (`Personas/Diana.agent.yaml`) — *Visionary UX/UI Designer & Experimental Styling Champion.*
-* ⚙️ **Mike** (`Personas/Mike.agent.yaml`) — *Production Workhorse & System Stability Specialist.*
-* 🔍 **Miranda** (`Personas/Miranda.agent.yaml`) — *Perfectionist Fact-Checker & Sovereign Quality Gatekeeper.*
-* 🧭 **Heather** (`Personas/Heather.agent.yaml`) — *Proactive Project Analyst & Circadian Ecosystem Caretaker.*
+### [★] Recommended Core Squad (Default)
+* 🧭 **Heather** (`Personas/Heather.agent.yaml`) — *Proactive Ecosystem Caretaker & Circadian Heartbeat.* Manages 3 PM triage sweeps, memory repair, and health protocols.
+* ⚙️ **Mike** (`Personas/Mike.agent.yaml`) — *Production Workhorse & Systems Stability Specialist.* High-reliability code, robust error boundaries, and flight checks.
+* 🎨 **Diana** (`Personas/Diana.agent.yaml`) — *Visionary UX/UI Designer & Brand Styling Architect.* Modern UI, responsive layouts, design tokens, and aesthetic polish.
+* 🔍 **Miranda** (`Personas/Miranda.agent.yaml`) — *Perfectionist Fact-Checker & Quality Gatekeeper.* Zero-tolerance audits, code verification, and empirical testing.
+* 🛡️ **Ben** (`Personas/Ben.agent.yaml`) — *OCD Code Quality Watchdog & Decoupling Specialist.* Path normalization, architectural boundaries, and refactoring.
+
+### [+] Specialized Domain Expansions (Optional)
+* 📢 **Alex** (`Personas/Alex.agent.yaml`) — *DevRel, Marketing & Technical Showcase Curator.* High-impact READMEs, case studies, release notes, and architecture diagrams.
+* 🔒 **James** (`Personas/James.agent.yaml`) — *Security, Auth & Zero-Trust Compliance Guardian.* Firestore rules, Intent security, credential scanning, and auth flows.
+* 🚀 **Ryan** (`Personas/Ryan.agent.yaml`) — *DevOps, Multiplatform CI/CD & Platform Engineer.* GitHub Actions workflows, build speed tuning, and release pipelines.
+* 📚 **Taylor** (`Personas/Taylor.agent.yaml`) — *Documentation Architect & API Scribe.* KDoc & Dokka API documentation, interactive recipe cookbooks, and ADRs.
+* 🧪 **Tessa** (`Personas/Tessa.agent.yaml`) — *Automated QA & Test Matrix Commander.* Exhaustive golden screenshot suites, Turbine assertions, and stress tests.
+
 
 ---
 
