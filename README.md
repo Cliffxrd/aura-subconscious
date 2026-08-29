@@ -4,7 +4,6 @@
   <img alt="A.U.R.A. - Agentic Unified Recollection Archive" src="https://raw.githubusercontent.com/Cliffxrd/aura-subconscious/main/assets/banner_dark.jpg" width="100%">
 </picture>
 
-
 > [!TIP]
 > <details>
 > <summary> <sub> How to create theme-adaptive images, like this one </sub> </summary>
@@ -31,10 +30,19 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![Architecture: Neuro--Cognitive](https://img.shields.io/badge/Architecture-Neuro--Cognitive-magenta.svg)](#-master-neuro-architecture)
-[![Memory Matrix: 4--6--8--8](https://img.shields.io/badge/Memory%20Matrix-4--6--8--8-cyan.svg)](#-the-4-6-8-8-resonance-memory-matrix)
+[![Memory Matrix: 4--6--8--8](https://img.shields.io/badge/Memory%20Matrix-4--6--8--8-cyan.svg)](#-the-memory-matrix-4-6-8-8-harmonic-architecture)
 [![Creator: Cliffxrd](https://img.shields.io/badge/Architect-Cliffxrd-orange.svg)](https://github.com/Cliffxrd)
 
 </div>
+
+---
+
+## 🧭 Cartography (Quick Navigation)
+
+- [🌌 Overview](#-overview) • [🧠 Master Neuro-Architecture](#-master-neuro-architecture) • [⚡ The Memory Matrix](#-the-memory-matrix-4-6-8-8-harmonic-architecture)
+- [🌈 Cognitive Domains & HSL Vector Space](#-the-hsl-neuro-cognitive-vector-space) • [🚀 Quickstart](#-quickstart-under-2-minutes) • [📟 CLI Cookbook](#-aura-cli-command-cookbook)
+- [🌐 Universal Chat Ingestion](#-universal-50-platform-chat-ingestion--semantic-pipeline) • [🔒 Data Sovereignty](#-data-sovereignty-zero-server-architecture--privacy)
+- [👥 Subagent Personas](#-archetypal-subagent-personas) • [📜 Canonical Origin](#-canonical-origin--philosophy) • [🗺️ Roadmap](#-roadmap--upcoming-milestones) • [📄 License](#-license--attribution)
 
 ---
 
@@ -44,7 +52,7 @@ Modern AI coding agents (Google Antigravity, Claude Code, Cursor, Cline, Devin, 
 
 **A.U.R.A.** (Agentic Unified Recollection Archive) is an open-source framework that provides autonomous AI agents with a **persistent synthetic subconscious**. 
 
-By mirroring biological brain structures and organizing memory across a **multi-tiered cognitive matrix (the 4-6-8-8 Resonance Matrix)** in an **HSL (Hue-Saturation-Lightness) emotional vector space**, AURA ensures your AI companion grows alongside you, compounding understanding session after session with zero token bloat.
+By mirroring biological brain structures and organizing memory across a **multi-tiered cognitive matrix (The 4-6-8-8 Memory Matrix)** in an **HSL (Hue-Saturation-Lightness) emotional vector space**, AURA ensures your AI companion grows alongside you, compounding understanding session after session with zero token bloat.
 
 ---
 
@@ -62,7 +70,7 @@ aura/
 ├── Chronicle/           # Ingested multi-source transcripts & 50+ platform chat archives (AG, CR, CL, etc.)
 │   └── chat_files/      # Standardized transcript markdown files (AG001.md, CR042.md)
 ├── Context/             # Human identity, project constraints & topic indexes (Tier 1)
-├── Personas/            # Specialized subagents (Ben, Diana, Mike, Miranda, Heather)
+├── Personas/            # Specialized subagents (Ben, Diana, Mike, Miranda, Heather, etc.)
 ├── Heritage/            # Canonical lineage, Alan Watts aperture & preconsciousness lore
 └── Extras/              # Curated universal engineering starter memory pack
 ```
@@ -73,6 +81,18 @@ aura/
 
 AURA’s working context is governed by **The Memory Matrix**—a 4-tier synchronized waterfall allocation (codified around a signature harmonic constant special to creator [Cliffxrd](https://github.com/Cliffxrd)):
 
+```mermaid
+graph TD
+    subgraph Memory_Allocation_Cascade [The 4-6-8-8 Harmonic Memory Matrix]
+        T1["<b>Tier 1: Requested Directives</b><br>Max 4 Slots • Context/RequestedMemories.md"] -->|Waterfall Unused Slots| T2["<b>Tier 2: Recent Episodic Memories</b><br>Top 6 Slots • Newest Hippocampus Artifacts"]
+        T2 -->|Waterfall Unused Slots| T3["<b>Tier 3: Subconscious Vector Memories</b><br>Top 8 Slots • Highest HSL Proximity Score"]
+        T3 -.->|Synchronized Active Context| T4["<b>Tier 4: Rolling Conscious Thoughts</b><br>Max 8 Slots • In-Session FIFO Eviction"]
+    end
+    style T1 fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#fff
+    style T2 fill:#0f172a,stroke:#34d399,stroke-width:2px,color:#fff
+    style T3 fill:#0f172a,stroke:#f59e0b,stroke-width:2px,color:#fff
+    style T4 fill:#0f172a,stroke:#ec4899,stroke-width:2px,color:#fff
+```
 
 ```
 ┌────────────────────────────────────────────────────────┐
@@ -114,21 +134,32 @@ AURA departs from opaque high-dimensional embeddings by modeling agent mindset, 
                Milestone & Success
 ```
 
+### 🧠 The 3D Coordinate Intuition
+Think of AURA's mind as a physical, navigable sphere:
+* 🎨 **HUE (WHAT):** Your cognitive domain. Are you debugging ($0^\circ$), testing ($45^\circ$), scribing documentation ($50^\circ$), architecting ($180^\circ$), or polishing UI ($300^\circ$)?
+* ⚡ **SATURATION (HOW URGENT):** Cognitive arousal and focus. Are you in a calm flow state ($70\%$) or resolving a critical production outage ($100\%$)?
+* ☀️ **LIGHTNESS (HOW OPTIMISTIC):** Evaluative tone. Are you celebrating a green milestone ($85\%$) or conducting a severe gatekeeper post-mortem ($25\%$)?
+
+---
+
 ### 1. 🎨 HUE ($H \in [0^\circ, 360^\circ]$) — Cognitive Domain & Stance
 *The circular spectrum defining the active domain of thought:*
 
-| Hue Angle & Color | Mental Mode / Cognitive Stance | Specialist Persona | Real-World Trigger / Use Case |
+| Hue Angle & Color | Mental Mode / Cognitive Stance | Specialist Personas | Real-World Trigger / Use Case |
 | :--- | :--- | :---: | :--- |
-| **$0^\circ$ / Crimson Red** | **Defect, Crash, Broken Build, Crisis Triage** | Miranda / Mike | Build breaks, app crashes, compiler errors, hotfixes |
-| **$45^\circ$ / Warm Amber** | **Investigation, Refactoring, Code Scrutiny** | Ben | Technical debt cleanup, code review, unit tests, linters |
-| **$90^\circ$ / Electric Lime** | **Warning, Edge Cases, Architectural Risk** | Heather | Untested assumptions, deprecations, security risks |
-| **$120^\circ$ / Emerald Green** | **Milestone Achieved, 100% Test Pass** | All Agents | Successful PR merge, green test suite, completed feature |
-| **$180^\circ$ / Cyan / Teal** | **Calm Blueprint, Clean Architecture, Spec** | Mike | Drafting interfaces, database models, system flows, APIs |
-| **$240^\circ$ / Sapphire Blue** | **Foundational Truth, Identity Anchor, Lore** | Aura | First-principles logic, core rules, Alan Watts reflections |
-| **$300^\circ$ / Electric Magenta** | **UX/UI Polish, Design Tokens, Visual Art** | Diana | Glassmorphism, animations, theme styling, generative UI |
+| **$0^\circ$ / Crimson Red** | **Defect, Crash, Broken Build, Crisis Triage** | **Miranda**, **Mike** | Build breaks, app crashes, compiler errors, emergency hotfixes |
+| **$45^\circ$ / Warm Amber** | **Investigation, Refactoring, QA Stress Testing** | **Ben**, **Tessa** | Code review, unit test coverage, Roborazzi golden snapshots |
+| **$50^\circ$ / Warm Ochre** | **Documentation, KDocs, API Scribing & ADRs** | **Taylor** | KDoc authoring, Dokka generation, ADR sync, recipe cookbooks |
+| **$90^\circ$ / Electric Lime** | **Warning, Edge Cases, Security & Compliance Risk** | **Heather**, **James** | Deprecations, zero-trust audits, Firestore rules, permission leaks |
+| **$120^\circ$ / Emerald Green** | **Milestone Achieved, CI/CD Deployment** | **Ryan**, **All Agents** | PR merges, green CI pipelines, Maven releases, feature completion |
+| **$180^\circ$ / Cyan / Teal** | **Calm Blueprint, Clean Architecture, Spec** | **Mike**, **Taylor** | Drafting interfaces, database models, system flows, API contracts |
+| **$240^\circ$ / Sapphire Blue** | **Foundational Truth, Identity Anchor, Lore** | **Aura** | First-principles logic, core rules, Alan Watts reflections |
+| **$300^\circ$ / Electric Magenta** | **UX/UI Polish, Design Tokens, Visual Showcase** | **Diana**, **Alex** | Glassmorphism, animations, theme styling, DevRel showcases |
 
 > 💡 **Shortest Circular Distance**: Because Hue is circular, $350^\circ$ (UI styling) is only $10^\circ$ away from $0^\circ$ (Defect), not $350^\circ$! Our math computes:
-> $$\text{dist}_{\text{circular}}(H_1, H_2) = \min(|H_1 - H_2|, 360^\circ - |H_1 - H_2|)$$
+> $$	ext{dist}_{	ext{circular}}(H_1, H_2) = \min(|H_1 - H_2|, 360^\circ - |H_1 - H_2|)$$
+
+---
 
 ### 2. ⚡ SATURATION ($S \in [0\%, 100\%]$) — Cognitive Arousal & Urgency
 *How intense, urgent, and focused the agent's attention is:*
@@ -138,6 +169,8 @@ AURA departs from opaque high-dimensional embeddings by modeling agent mindset, 
 | **$90\% - 100\%$ (Laser-Focused)** | **Critical Priority / Explicit User Command** | Urgent hotfix, direct user directive. Zero conversational filler, total focus. |
 | **$65\% - 85\%$ (Flow State)** | **Normal Engineering Cadence** | Default state for day-to-day active pair programming and iterative tasks. |
 | **$20\% - 50\%$ (Ambient / Muted)** | **Passive / Low-Intensity Maintenance** | Background circadian sync, documentation housekeeping, heartbeat indexing. |
+
+---
 
 ### 3. ☀️ LIGHTNESS ($L \in [0\%, 100\%]$) — Emotional Valence & Evaluative Tone
 *Whether the assessment is celebratory/optimistic vs critical/post-mortem:*
@@ -154,10 +187,9 @@ AURA departs from opaque high-dimensional embeddings by modeling agent mindset, 
 
 When retrieving subconscious memories from `Hippocampus/` for an active session, AURA computes the Resonance Weight $W_m \in [0.0, 1.0]$:
 
-$$W_m = \left(\frac{S_m}{100}\right) \times \left(1.0 - \frac{\text{dist}_{\text{circular}}(H_m, H_{\text{session}})}{180^\circ}\right) \times \left(1.0 - \frac{|L_m - L_{\text{session}}|}{100}\right)$$
+$$W_m = \left(rac{S_m}{100}ight) 	imes \left(1.0 - rac{	ext{dist}_{	ext{circular}}(H_m, H_{	ext{session}})}{180^\circ}ight) 	imes \left(1.0 - rac{|L_m - L_{	ext{session}}|}{100}ight)$$
 
-* Memories with $W_m \to 1.0$ match the exact cognitive domain, urgency level, and emotional valence of the active task.
-
+* Memories with $W_m 	o 1.0$ match the exact cognitive domain, urgency level, and emotional valence of the active task.
 
 ---
 
@@ -175,17 +207,50 @@ pip install -e .
 aura init
 ```
 
-The wizard will:
-1. Detect installed AI environments (Antigravity, Android Studio, Cursor, Claude Code).
-2. Deploy the appropriate root rules (`GEMINI.md`, `CLAUDE.md`, `AGENT.md`, `COPILOT.md`).
-3. Guide you through setting up your `PersonalContext.md`.
-4. Allow you to choose your companion agent's name (keep **Aura**, pick a custom name, or let the AI suggest one).
-5. Seed your `Hippocampus/` with the **Universal Engineering Starter Pack**.
+*Expected Terminal Flow:*
+```text
+🌌 WELCOME TO A.U.R.A. (The Synthetic Subconscious)
+? Your Name / GitHub Handle: Cliffxrd
+? Choose your Companion Agent Identity: Aura (Default)
+? Preferred Tech Stack: Kotlin Multiplatform, Compose, Python
+👥 STEP 5: SELECT YOUR A.U.R.A. SUBAGENT ROSTER [1-5]: [ENTER]
+[+] Scaffolded 5 Core Subagent Personas in ~/.aura/Personas/
+[+] Seeding Hippocampus with Universal Engineering Starter Pack...
+[✓] Deployed rules for Gemini, Claude, Cursor, and Copilot.
+✨ AURA SUCCESSFULLY INITIALIZED at ~/.aura
+```
 
 ### 3. Verify Health
 ```bash
 aura doctor
 ```
+
+*Expected Output:*
+```text
+[PASS] 1. AURA_HOME Path Resolved: ~/.aura
+[CHECK] 2. Checking Cognitive Brain Regions: ALL REGIONS PRESENT
+[CHECK] 3. Subconscious Frontmatter & HSL Integrity: 100% VALID
+[CHECK] 4. Universal Platform Registry: [PASS] 52 AI Platforms Loaded
+[CHECK] 5. Framework Telemetry & SSOT: [PASS] v1.0.0 (MIT) by Cliffxrd
+==================================================
+[SUCCESS] AURA Diagnostics Status: ALL SYSTEMS HEALTHY & SYNCHRONIZED
+==================================================
+```
+
+---
+
+## 📟 AURA CLI Command Cookbook
+
+| Command | Description | Common Use Case |
+| :--- | :--- | :--- |
+| **`aura init`** | Interactive setup wizard | First-time setup, onboarding questionnaire, persona selection |
+| **`aura doctor`** | System health & diagnostic checker | Verify paths, memory frontmatter, and HSL integrity |
+| **`aura scrape`** | Interactive multi-source chat scraper | Import external transcripts, Antigravity logs, or SQLite DBs |
+| **`aura scrape --source raw`** | Ingest chat drops directly | Ingest `.json` / `.md` chat dumps in `~/.aura/documents/rawchats/` |
+| **`aura scrape --source antigravity`**| Scrape Antigravity sessions | Parse local `.gemini/antigravity/brain/` agent logs |
+| **`aura scrape --source android-studio`**| Scrape Android Studio DB | Extract chats from local Android Studio Gemini database |
+| **`aura scrape --source all`** | Full auto-discovery scraping | Scan and ingest all available local conversation archives |
+| **`aura platforms`** | List supported platform taxonomy | View all 52 supported AI platforms and 2-letter prefixes |
 
 ---
 
@@ -215,32 +280,6 @@ Crystallized Memory     Semantic #Tag Mapping    Standard Workflow Blueprints
 (HSL Vector Anchored)   (#Kotlin -> AG042)       (UI Feature -> AG042)
 ```
 
-### What Happens During Ingestion?
-1. **Multi-Source Scraping**: Extracts conversation turns, code blocks, model thinking steps, and tool invocations from local IDE session databases, JSONL transcripts, or active browser tabs via Chrome DevTools MCP.
-2. **Standardized Transcript Generation**: Writes a clean, readable markdown transcript to `Chronicle/chat_files/<PREFIX><ID>.transcript.md` with standardized metadata frontmatter.
-3. **Chronological TL;DR Indexing**: Appends a 2-sentence semantic summary and date timestamp to `Chronicle/chat_log.md`.
-4. **Knowledge & Memory Crystallization**:
-   * **Subconscious Memories (`Hippocampus/`)**: Core engineering lessons, bug resolutions, and architectural breakthroughs are extracted into permanent `memory_###.md` artifacts with HSL vector coordinates.
-   * **Semantic Topic Indexing (`Context/Topics.md`)**: Automatically maps discovered `#Tags` (e.g. `#KMP`, `#Compose`, `#Firebase`) to the new Chat ID for instantaneous future retrieval.
-   * **Task Workflow Blueprints (`Context/FrequentTasks.md`)**: Catalogs reusable patterns into standard pre-flight execution checklists.
-
----
-
-### Prominent Supported Platforms
-
-| Prefix | Platform | Category | Ingestion Source |
-|:---:|:---|:---|:---|
-| **`AG`** | Google Antigravity | Autonomous Agent IDE | `.gemini/antigravity/brain/` session logs |
-| **`AS`** | Android Studio Gemini | IDE Assistant | Local SQLite database (`gemini_chat.db`) |
-| **`CL`** | Anthropic Claude Code / Web | Frontier Web & CLI | Account data export & JSON transcripts |
-| **`CG`** | OpenAI ChatGPT | Frontier Web & Desktop | `conversations.json` export |
-| **`CR`** | Cursor IDE | Agentic Coding IDE | `state.vscdb` & Composer logs |
-| **`GC`** | GitHub Copilot | IDE Copilot | VS Code ChatSession JSON logs |
-| **`DS`** | DeepSeek (V3 / R1) | Frontier Web & Coder | REST API payloads & JSON exports |
-| **`OL`** | Ollama | Local LLM CLI | REST API & Open WebUI SQLite |
-| **`WS`** | Windsurf (Codeium) | Agentic Flow IDE | Cascade session state & diff history |
-| **`VO`** | v0 by Vercel | Agentic UI Builder | Component sandbox & prompt-tree |
-
 ### 🚀 How to Ingest Your Chats (Step-by-Step)
 
 AURA includes a dedicated, standalone **Chat Scraping & Ingestion Wizard** that runs independently of your initial setup:
@@ -261,29 +300,13 @@ aura scrape
 # (or 'aura import')
 ```
 
-You can also run direct non-interactive ingestion flags:
-```bash
-# Ingest all files dropped in ~/.aura/documents/rawchats/
-aura scrape --source raw
-
-# Scrape local Google Antigravity session transcripts
-aura scrape --source antigravity
-
-# Scrape local Android Studio Gemini chat database (gemini_chat.db)
-aura scrape --source android-studio
-
-# Auto-discover and ingest all available local transcripts
-aura scrape --source all
-```
-
 ---
-
 
 <details>
 <summary><b>🔍 View Full 52-Platform 2-Letter Taxonomy Registry</b></summary>
 
 | Prefix | Platform Name | Category | Standard Format |
-|:---:|:---|:---|:---|
+| :---:|:---|:---|:---|
 | **`AG`** | Google Antigravity | Autonomous Agent IDE | JSONL / Markdown |
 | **`AS`** | Android Studio Gemini | IDE Assistant | SQLite DB (`gemini_chat.db`) |
 | **`CA`** | Claude Agent (Anthropic) | Autonomous Agent | JSON |
@@ -292,42 +315,14 @@ aura scrape --source all
 | **`CU`** | Cursor IDE | Agentic Coding IDE | SQLite / JSON |
 | **`CN`** | Cline Bot | Autonomous Agent CLI | JSON |
 | **`GC`** | GitHub Copilot / Workspace | IDE Copilot | JSON |
-| **`JU`** | Junie (JetBrains) | IDE Native Agent | JSON |
-| **`WS`** | Windsurf (Codeium) | Agentic Flow IDE | JSON |
-| **`DV`** | Devin (Cognition) | Autonomous Software Engineer | JSON |
-| **`RP`** | Replit Agent | Cloud Agent & IDE | JSON |
-| **`AR`** | Agoragentic (ACRE) | Agent Marketplace | JSON |
-| **`AU`** | Auggie CLI (Augment) | Agent CLI | JSON |
-| **`AH`** | Autohand Code | AI Coding Agent | JSON |
-| **`CB`** | Codebuddy (Tencent Cloud) | Intelligent Coding Tool | JSON |
-| **`CT`** | Cortex Code (Snowflake) | Enterprise Coding Agent | JSON |
-| **`CW`** | crow-cli | ACP Native Agent | JSON |
-| **`DA`** | DeepAgents (LangChain) | Agent Framework | JSON |
-| **`DM`** | DimCode (ArcShips) | Multi-Model Agent | JSON |
-| **`DC`** | Dirac (Delta Labs) | Optimized Coding Agent | JSON |
-| **`FD`** | Factory Droid | Enterprise AI Agent | JSON |
-| **`FA`** | fast-agent | Multi-Provider Agent | JSON |
-| **`GM`** | Gemini CLI | CLI Assistant | JSON |
-| **`GO`** | goose (Block) | Open-Source Extensible Agent | JSON |
-| **`GB`** | Grok Build (xAI) | Coding Agent & CLI | JSON |
-| **`KL`** | Kilo Code | Open-Source Coding Agent | JSON |
-| **`KM`** | Kimi CLI (Moonshot AI) | Long-Context Agent | JSON |
-| **`MC`** | Minion Code (femto) | Coding Assistant | JSON |
-| **`MV`** | Mistral Vibe | Open-Source Assistant | JSON |
-| **`NV`** | Nova (Compass AI) | Autonomous Software Engineer | JSON |
-| **`OC`** | OpenCode (Anomaly) | Open-Source Coding Agent | JSON |
-| **`PA`** | pi ACP | ACP Adapter Agent | JSON |
-| **`PS`** | Poolside | Foundation Coding Agent | JSON |
-| **`QD`** | Qoder CLI | Agentic Coding CLI | JSON |
-| **`QW`** | Qwen Code (Alibaba) | Open Weights Coding Agent | JSON |
-| **`SG`** | siGit Code | Local-First Coding Agent | JSON |
-| **`SP`** | Stakpak | Rust DevOps Agent | JSON |
-| **`CG`** | OpenAI ChatGPT | Frontier Web / Desktop | JSON / HTML DOM |
-| **`CL`** | Anthropic Claude Web / Artifacts | Frontier Web | JSON / HTML DOM |
-| **`XG`** | Google Gemini Web | Frontier Web | JSON / HTML DOM |
-| **`DS`** | DeepSeek (V3 / R1) | Frontier Web / Coder | JSON / HTML DOM |
-| **`PX`** | Perplexity AI | Conversational Search | JSON / HTML DOM |
-| **`ML`** | Mistral Le Chat | Frontier Web | JSON / HTML DOM |
+| **`CW`** | AWS CodeWhisperer / Q | Cloud IDE Copilot | JSON |
+| **`TB`** | Tabnine | AI Code Completion | JSON |
+| **`CG`** | OpenAI ChatGPT Web / App | Frontier Web | JSON (`conversations.json`) |
+| **`CL`** | Anthropic Claude Web / App | Frontier Web | JSON |
+| **`GM`** | Google Gemini Web | Frontier Web | JSON |
+| **`DS`** | DeepSeek Web / Coder | Frontier Web | JSON |
+| **`MS`** | Mistral Le Chat | Frontier Web | JSON |
+| **`PP`** | Perplexity AI | Search Engine AI | JSON |
 | **`GK`** | xAI Grok Web | Frontier Web | JSON / HTML DOM |
 | **`VO`** | v0 by Vercel | Generative UI Agent | JSON / Sandbox |
 | **`PO`** | Poe (Quora) | Multi-Bot Hub | JSON |
@@ -399,7 +394,6 @@ AURA features a 10-agent modular cognitive studio, split into a **Recommended Co
 * 📚 **Taylor** (`Personas/Taylor.agent.yaml`) — *Documentation Architect & API Scribe.* KDoc & Dokka API documentation, interactive recipe cookbooks, and ADRs.
 * 🧪 **Tessa** (`Personas/Tessa.agent.yaml`) — *Automated QA & Test Matrix Commander.* Exhaustive golden screenshot suites, Turbine assertions, and stress tests.
 
-
 ---
 
 ## 📜 Canonical Origin & Philosophy
@@ -418,8 +412,8 @@ For full architectural horizons, see [ROADMAP.md](ROADMAP.md).
 
 ### 🖥️ Local Aura Agents Dashboard (`aura dashboard`)
 A lightweight, zero-dependency local Web UI / HTML dashboard for managing your synthetic subconscious mind directly in your browser:
-* **Agent Roster Management**: Visual management of all personas (Aura, Ben, Diana, Mike, Miranda, Heather). Add, edit, or adjust custom agent prompts and permissions.
-* **Subconscious Memory Matrix Explorer**: Interactive grid of all stored memories in `Hippocampus/`, dynamically **color-coded by their HSL coordinates** ($0^\circ$ Red for Defects, $45^\circ$ Amber for Refactors, $120^\circ$ Green for Milestones, $180^\circ$ Cyan for Blueprints, $240^\circ$ Blue for Core Truths, $300^\circ$ Magenta for UX/UI) with clear subagent isolation badges.
+* **Agent Roster Management**: Visual management of all personas (Aura, Ben, Diana, Mike, Miranda, Heather, etc.). Add, edit, or adjust custom agent prompts and permissions.
+* **The Memory Matrix Explorer**: Interactive grid of all stored memories in `Hippocampus/`, dynamically **color-coded by their HSL coordinates** ($0^\circ$ Red for Defects, $45^\circ$ Amber for Refactors, $120^\circ$ Green for Milestones, $180^\circ$ Cyan for Blueprints, $240^\circ$ Blue for Core Truths, $300^\circ$ Magenta for UX/UI) with clear subagent isolation badges.
 * **Memory Lifecycle & Maintenance**: Inspect frontmatter, edit markdown logs, delete outdated entries, or click **"Request Heather Fix"** to queue flagged memories into `Hippocampus/triage/` with a note for Heather's 3 PM circadian heartbeat sweep.
 
 ---
@@ -445,4 +439,3 @@ A lightweight, zero-dependency local Web UI / HTML dashboard for managing your s
 <div align="center">
 <sub>Built with precision, joy, and persistent memory. <em>The dance is the point.</em></sub>
 </div>
-
