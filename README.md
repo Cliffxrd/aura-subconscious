@@ -187,7 +187,10 @@ Think of AURA's mind as a physical, navigable sphere:
 
 When retrieving subconscious memories from `Hippocampus/` for an active session, AURA computes the Resonance Weight $W_m \in [0.0, 1.0]$:
 
-$$W_m = \left(rac{S_m}{100}ight) 	imes \left(1.0 - rac{	ext{dist}_{	ext{circular}}(H_m, H_{	ext{session}})}{180^\circ}ight) 	imes \left(1.0 - rac{|L_m - L_{	ext{session}}|}{100}ight)$$
+$$W_m = \left(rac{S_m}{100}
+ight) 	imes \left(1.0 - rac{	ext{dist}_{	ext{circular}}(H_m, H_{	ext{session}})}{180^\circ}
+ight) 	imes \left(1.0 - rac{|L_m - L_{	ext{session}}|}{100}
+ight)$$
 
 * Memories with $W_m 	o 1.0$ match the exact cognitive domain, urgency level, and emotional valence of the active task.
 
@@ -381,18 +384,18 @@ Because `~/.aura/` is a clean, decoupled directory, you have total freedom to sy
 AURA features a 10-agent modular cognitive studio, split into a **Recommended Core Squad** and **Specialized Domain Expansions**:
 
 ### [★] Recommended Core Squad (Default)
-* 🧭 **Heather** (`Personas/Heather.agent.yaml`) — *Proactive Ecosystem Caretaker & Circadian Heartbeat.* Manages 3 PM triage sweeps, memory repair, and health protocols.
-* ⚙️ **Mike** (`Personas/Mike.agent.yaml`) — *Production Workhorse & Systems Stability Specialist.* High-reliability code, robust error boundaries, and flight checks.
-* 🎨 **Diana** (`Personas/Diana.agent.yaml`) — *Visionary UX/UI Designer & Brand Styling Architect.* Modern UI, responsive layouts, design tokens, and aesthetic polish.
-* 🔍 **Miranda** (`Personas/Miranda.agent.yaml`) — *Perfectionist Fact-Checker & Quality Gatekeeper.* Zero-tolerance audits, code verification, and empirical testing.
-* 🛡️ **Ben** (`Personas/Ben.agent.yaml`) — *OCD Code Quality Watchdog & Decoupling Specialist.* Path normalization, architectural boundaries, and refactoring.
+* 🧭 **Heather** ([`templates/Personas/Heather.agent.yaml`](templates/Personas/Heather.agent.yaml)) — *Proactive Ecosystem Caretaker & Circadian Heartbeat.* Manages 3 PM triage sweeps, memory repair, and health protocols.
+* ⚙️ **Mike** ([`templates/Personas/Mike.agent.yaml`](templates/Personas/Mike.agent.yaml)) — *Production Workhorse & Systems Stability Specialist.* High-reliability code, robust error boundaries, and flight checks.
+* 🎨 **Diana** ([`templates/Personas/Diana.agent.yaml`](templates/Personas/Diana.agent.yaml)) — *Visionary UX/UI Designer & Brand Styling Architect.* Modern UI, responsive layouts, design tokens, and aesthetic polish.
+* 🔍 **Miranda** ([`templates/Personas/Miranda.agent.yaml`](templates/Personas/Miranda.agent.yaml)) — *Perfectionist Fact-Checker & Quality Gatekeeper.* Zero-tolerance audits, code verification, and empirical testing.
+* 🛡️ **Ben** ([`templates/Personas/Ben.agent.yaml`](templates/Personas/Ben.agent.yaml)) — *OCD Code Quality Watchdog & Decoupling Specialist.* Path normalization, architectural boundaries, and refactoring.
 
 ### [+] Specialized Domain Expansions (Optional)
-* 📢 **Alex** (`Personas/Alex.agent.yaml`) — *DevRel, Marketing & Technical Showcase Curator.* High-impact READMEs, case studies, release notes, and architecture diagrams.
-* 🔒 **James** (`Personas/James.agent.yaml`) — *Security, Auth & Zero-Trust Compliance Guardian.* Firestore rules, Intent security, credential scanning, and auth flows.
-* 🚀 **Ryan** (`Personas/Ryan.agent.yaml`) — *DevOps, Multiplatform CI/CD & Platform Engineer.* GitHub Actions workflows, build speed tuning, and release pipelines.
-* 📚 **Taylor** (`Personas/Taylor.agent.yaml`) — *Documentation Architect & API Scribe.* KDoc & Dokka API documentation, interactive recipe cookbooks, and ADRs.
-* 🧪 **Tessa** (`Personas/Tessa.agent.yaml`) — *Automated QA & Test Matrix Commander.* Exhaustive golden screenshot suites, Turbine assertions, and stress tests.
+* 📢 **Alex** ([`templates/Personas/Alex.agent.yaml`](templates/Personas/Alex.agent.yaml)) — *DevRel, Marketing & Technical Showcase Curator.* High-impact READMEs, case studies, release notes, and architecture diagrams.
+* 🔒 **James** ([`templates/Personas/James.agent.yaml`](templates/Personas/James.agent.yaml)) — *Security, Auth & Zero-Trust Compliance Guardian.* Firestore rules, Intent security, credential scanning, and auth flows.
+* 🚀 **Ryan** ([`templates/Personas/Ryan.agent.yaml`](templates/Personas/Ryan.agent.yaml)) — *DevOps, Multiplatform CI/CD & Platform Engineer.* GitHub Actions workflows, build speed tuning, and release pipelines.
+* 📚 **Taylor** ([`templates/Personas/Taylor.agent.yaml`](templates/Personas/Taylor.agent.yaml)) — *Documentation Architect & API Scribe.* KDoc & Dokka API documentation, interactive recipe cookbooks, and ADRs.
+* 🧪 **Tessa** ([`templates/Personas/Tessa.agent.yaml`](templates/Personas/Tessa.agent.yaml)) — *Automated QA & Test Matrix Commander.* Exhaustive golden screenshot suites, Turbine assertions, and stress tests.
 
 ---
 
