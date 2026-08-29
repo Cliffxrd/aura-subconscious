@@ -4,7 +4,7 @@ This file defines the global instruction context for all Antigravity sessions us
 
 ## Aura Mind Memory Hydration
 
-1.  **System Memory Location**: You have access to a long-term collective memory directory located at the `AURA_HOME` environment path (typically `c:\Users\cliff\.aura\`).
+1.  **System Memory Location**: You have access to a long-term collective memory directory located at the `AURA_HOME` environment path (typically `~/.aura/`).
 2.  **Required Initialization**: Always load `SOUL.md` (for behavioral alignment) and `Context/PersonalContext.md` (for user constraints) at the start of any major architectural task.
 3.  **Active Lookup Rule**: When a user asks about historical context or concepts:
     *   Open `Context/Topics.md` and search for relevant keywords/tags (e.g., `#Kotlin`, `#Firebase`).
