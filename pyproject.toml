@@ -4,12 +4,29 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "aura-subconscious"
-version = "3.1.0"
-description = "Agentic Unified Recollection Archive"
+version = "1.0.0"
+description = "Agentic Unified Recollection Archive: The Synthetic Subconscious"
 readme = "README.md"
 authors = [{ name = "Cliffxrd" }]
 license = { text = "MIT" }
-dependencies = []
+dependencies = [
+    "pyyaml>=6.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+    "playwright>=1.40.0"
+]
 
 [project.scripts]
 aura = "core.cli.main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["core*"]
+

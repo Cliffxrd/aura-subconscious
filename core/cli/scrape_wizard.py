@@ -13,21 +13,22 @@ from core.ingestion.raw_chat_importer import RawChatImporter
 from core.ingestion.antigravity_scraper import AntigravityScraper
 from core.ingestion.android_studio_scraper import AndroidStudioScraper
 
+
 class AuraScrapeWizard:
     """Dedicated interactive wizard for multi-source chat scraping and transcript ingestion."""
-    
+
     def __init__(self, aura_home: Optional[Path] = None):
         self.aura_home = aura_home or ConfigResolver.resolve_aura_home()
         self.rawchats_dir = self.aura_home / "documents" / "rawchats"
         self.chronicle_dir = self.aura_home / "Chronicle"
         self.chat_files_dir = self.chronicle_dir / "chat_files"
         self.chat_log_file = self.chronicle_dir / "chat_log.md"
-        
+
         # Ensure directories exist
         self.rawchats_dir.mkdir(parents=True, exist_ok=True)
         self.chat_files_dir.mkdir(parents=True, exist_ok=True)
         self._ensure_rawchats_readme()
-        
+
     def _ensure_rawchats_readme(self):
         readme = self.rawchats_dir / "README.md"
         if not readme.exists():
@@ -43,15 +44,15 @@ class AuraScrapeWizard:
                 "# or\n"
                 "aura import\n"
                 "```\n",
-                encoding="utf-8"
+                encoding="utf-8",
             )
 
     def run_menu(self):
         """Display interactive scraping wizard menu."""
         while True:
-            print("\n" + "="*65)
+            print("\n" + "=" * 65)
             print("🌐 A.U.R.A. UNIVERSAL CHAT INGESTION & SCRAPING WIZARD")
-            print("="*65)
+            print("=" * 65)
             print(f"Target Subconscious Archive: {self.aura_home}\n")
             print("Select an ingestion source:")
             print("  1. 📂 Ingest Raw Chat Drops (from ~/.aura/documents/rawchats/)")
@@ -61,10 +62,10 @@ class AuraScrapeWizard:
             print("  5. 🔍 Full Auto-Discovery (Scan & Ingest All Available Sources)")
             print("  6. 🏷️  View 52-Platform 2-Letter Prefix Registry")
             print("  0. ↩️  Exit")
-            print("="*65)
-            
+            print("=" * 65)
+
             choice = input("\nEnter choice [1-6, 0 to exit]: ").strip()
-            
+
             if choice == "1":
                 self.ingest_raw_drops()
             elif choice == "2":
@@ -87,12 +88,16 @@ class AuraScrapeWizard:
         """Ingest raw JSON/MD chat drops from documents/rawchats."""
         target_dir = custom_path or self.rawchats_dir
         print(f"\n[INGEST] Scanning raw chat drops in: {target_dir}")
-        
-        importer = RawChatImporter(staging_dir=target_dir, output_dir=self.chat_files_dir)
+
+        importer = RawChatImporter(
+            staging_dir=target_dir, output_dir=self.chat_files_dir
+        )
         records = importer.import_chats()
-        
+
         if records:
-            print(f"  [SUCCESS] Ingested {len(records)} transcripts to {self.chat_files_dir}")
+            print(
+                f"  [SUCCESS] Ingested {len(records)} transcripts to {self.chat_files_dir}"
+            )
             self._update_chat_log(records)
         else:
             print(f"  [INFO] No new chat files found in {target_dir}.")
@@ -104,16 +109,22 @@ class AuraScrapeWizard:
         """Scrape local Antigravity brain transcripts."""
         print("\n[SCRAPE] Searching for Google Antigravity brain directories...")
         default_brain = Path.home() / ".gemini" / "antigravity" / "brain"
-        
+
         if not default_brain.exists():
-            print(f"  [INFO] Antigravity brain path not found at default: {default_brain}")
-            custom = input("  Enter custom Antigravity brain path (or press Enter to skip): ").strip()
+            print(
+                f"  [INFO] Antigravity brain path not found at default: {default_brain}"
+            )
+            custom = input(
+                "  Enter custom Antigravity brain path (or press Enter to skip): "
+            ).strip()
             if custom:
                 default_brain = Path(custom)
             else:
                 return 0
-                
-        scraper = AntigravityScraper(brain_dir=default_brain, output_dir=self.chat_files_dir)
+
+        scraper = AntigravityScraper(
+            brain_dir=default_brain, output_dir=self.chat_files_dir
+        )
         count = scraper.scrape_all()
         print(f"  [SUCCESS] Ingested {count} Antigravity transcripts (Prefix: AG###).")
         return count
@@ -122,21 +133,25 @@ class AuraScrapeWizard:
         """Scrape Android Studio Gemini chat database."""
         print("\n[SCRAPE] Searching for Android Studio Gemini SQLite database...")
         db_path = None
-        
+
         appdata = os.environ.get("APPDATA")
         if appdata:
-            possible_paths = list(Path(appdata).glob("Google/AndroidStudio*/gemini_chat.db"))
+            possible_paths = list(
+                Path(appdata).glob("Google/AndroidStudio*/gemini_chat.db")
+            )
             if possible_paths:
                 db_path = possible_paths[0]
-                
+
         if not db_path or not db_path.exists():
             print("  [INFO] Standard Android Studio database not found automatically.")
-            custom = input("  Enter path to gemini_chat.db (or press Enter to skip): ").strip()
+            custom = input(
+                "  Enter path to gemini_chat.db (or press Enter to skip): "
+            ).strip()
             if custom:
                 db_path = Path(custom)
             else:
                 return 0
-                
+
         scraper = AndroidStudioScraper(db_path=db_path, output_dir=self.chat_files_dir)
         count = scraper.scrape_all()
         print(f"  [SUCCESS] Ingested {count} Android Studio chats (Prefix: AS###).")
@@ -144,9 +159,9 @@ class AuraScrapeWizard:
 
     def show_browser_scraper_guide(self):
         """Display instructions for interactive browser chat scraping."""
-        print("\n" + "-"*65)
+        print("\n" + "-" * 65)
         print("🌐 INTERACTIVE WEB BROWSER CHAT SCRAPER (Chrome DevTools MCP)")
-        print("-"*65)
+        print("-" * 65)
         print("To scrape an active ChatGPT, Claude, DeepSeek, or Gemini web chat:")
         print("1. Open the chat conversation in your Chrome browser.")
         print("2. In your AI agent environment (Antigravity / Claude Code):")
@@ -154,7 +169,7 @@ class AuraScrapeWizard:
         print("3. The agent will execute `core/ingestion/browser_scraper.py` via MCP,")
         print("   extract the DOM messages, assign the appropriate 2-letter prefix,")
         print(f"   and save the transcript to: {self.chat_files_dir}")
-        print("-"*65)
+        print("-" * 65)
 
     def run_full_auto_discovery(self):
         """Run all available scrapers."""
@@ -163,14 +178,18 @@ class AuraScrapeWizard:
         ag_count = self.scrape_antigravity()
         as_count = self.scrape_android_studio()
         total = raw_count + ag_count + as_count
-        print(f"\n✨ [COMPLETED] Auto-Discovery finished! Total new transcripts indexed: {total}")
+        print(
+            f"\n✨ [COMPLETED] Auto-Discovery finished! Total new transcripts indexed: {total}"
+        )
 
     def show_platform_registry(self):
         """Display full 52-platform prefix table."""
         platforms = PlatformRegistry.list_all_prefixes()
-        print(f"\n🌐 Universal 2-Letter Prefix Master Registry ({len(platforms)} Platforms):\n")
+        print(
+            f"\n🌐 Universal 2-Letter Prefix Master Registry ({len(platforms)} Platforms):\n"
+        )
         print(f"  {'Prefix':<8} {'Platform Name'}")
-        print("  " + "-"*40)
+        print("  " + "-" * 40)
         for prefix, name in sorted(platforms.items()):
             print(f"  [{prefix:<4}] {name}")
         print("")
@@ -178,8 +197,10 @@ class AuraScrapeWizard:
     def _update_chat_log(self, records: List[Dict[str, Any]]):
         """Append ingested records to Chronicle/chat_log.md."""
         if not self.chat_log_file.exists():
-            self.chat_log_file.write_text("# AURA Chronicle: Chat Log Index\n\n", encoding="utf-8")
-            
+            self.chat_log_file.write_text(
+                "# AURA Chronicle: Chat Log Index\n\n", encoding="utf-8"
+            )
+
         with open(self.chat_log_file, "a", encoding="utf-8") as f:
             for rec in records:
                 cid = rec.get("id", "UNKNOWN")
