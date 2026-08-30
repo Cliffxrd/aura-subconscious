@@ -39,4 +39,7 @@ jobs:
 
     - name: Verify Installed CLI Entrypoint
       run: |
+        aura --version
+        aura --help
+        aura platforms
         aura doctor

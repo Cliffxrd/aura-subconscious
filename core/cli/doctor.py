@@ -22,12 +22,12 @@ class AuraDoctor:
     def run_diagnostics(self) -> bool:
         """Run all system checks and return overall health status."""
         print("[AURA] Running Neuro-Architecture Diagnostics...\n")
-        all_passed = True
+        engine_healthy = True
 
         # 1. Path Resolution
         print(f"[PASS] 1. AURA_HOME Path Resolved: {self.aura_home}")
 
-        # 2. Check Directories
+        # 2. Check Cognitive Directories (Scaffolded state vs Uninitialized)
         print("\n[CHECK] 2. Checking Cognitive Brain Regions:")
         required_dirs = [
             "Cortex",
@@ -38,13 +38,14 @@ class AuraDoctor:
             "Context",
             "Personas",
         ]
+        present_dirs = 0
         for d in required_dirs:
             dp = self.aura_home / d
             if dp.exists():
                 print(f"  [PASS] /{d}")
+                present_dirs += 1
             else:
-                print(f"  [WARN] /{d}")
-                all_passed = False
+                print(f"  [INFO] /{d} (Pending `aura init`)")
 
         # 3. Check Subconscious Memories Frontmatter
         print("\n[CHECK] 3. Checking Subconscious Memory Frontmatter & HSL Integrity:")
@@ -64,10 +65,12 @@ class AuraDoctor:
                         print(
                             f"  [WARN] Memory {mem_file.name} validation failed: {validation.errors}"
                         )
+                        engine_healthy = False
                 else:
                     print(
                         f"  [WARN] Corrupted memory {mem_file.name}: {parsed.get('error')}"
                     )
+                    engine_healthy = False
 
             print(
                 f"  [INFO] Valid Memories in Hippocampus: {valid_mems}/{len(memories)}"
@@ -82,7 +85,7 @@ class AuraDoctor:
             print(f"[PASS] {len(platforms)} AI Platforms Loaded.")
         else:
             print(f"[WARN] Only {len(platforms)} platforms registered.")
-            all_passed = False
+            engine_healthy = False
 
         # 5. Versioning & SSOT
         print(
@@ -90,14 +93,17 @@ class AuraDoctor:
         )
 
         print("\n" + "=" * 50)
-        if all_passed:
-            print(
-                "[SUCCESS] AURA Diagnostics Status: ALL SYSTEMS HEALTHY & SYNCHRONIZED"
-            )
+        if engine_healthy:
+            if present_dirs == len(required_dirs):
+                print(
+                    "[SUCCESS] AURA Diagnostics Status: ALL SYSTEMS HEALTHY & SYNCHRONIZED"
+                )
+            else:
+                print(
+                    f"[SUCCESS] AURA Diagnostics Status: ENGINE READY ({present_dirs}/{len(required_dirs)} regions active - Run `aura init` to scaffold user brain)"
+                )
         else:
-            print(
-                "[WARN] AURA Diagnostics Status: SOME BRAIN REGIONS MISSING (Run `aura init` to complete scaffolding)"
-            )
+            print("[ERROR] AURA Diagnostics Status: INTEGRITY ERRORS DETECTED")
         print("=" * 50 + "\n")
 
-        return all_passed
+        return engine_healthy

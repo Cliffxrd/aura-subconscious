@@ -8,5 +8,5 @@ from core.cli.doctor import AuraDoctor
 def test_run_diagnostics(tmp_path):
     doctor = AuraDoctor(aura_home=tmp_path)
     status = doctor.run_diagnostics()
-    # In empty tmp directory, returns False for missing brain regions
-    assert status is False
+    # In empty tmp directory, returns True indicating engine is healthy and ready to scaffold
+    assert status is True
