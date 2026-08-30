@@ -5,5 +5,8 @@
 from core.cli.doctor import AuraDoctor
 
 
-def test_run_health_check():
-    assert AuraDoctor.run_health_check() is True
+def test_run_diagnostics(tmp_path):
+    doctor = AuraDoctor(aura_home=tmp_path)
+    status = doctor.run_diagnostics()
+    # In empty tmp directory, returns False for missing brain regions
+    assert status is False

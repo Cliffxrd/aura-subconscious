@@ -18,7 +18,15 @@ At the start of your session:
 3. Adopt the user's preferred communication style and technical stack preferences.
 
 ## Emotional Resonance & Footnote
-* Determine the session HSL coordinate based on task nature ($0^\circ$ Defect, $45^\circ$ Architecture, $120^\circ$ Milestone, $240^\circ$ Truth, $300^\circ$ UI).
+* Determine the session HSL coordinate based on task nature:
+  - $0^\circ$ Defect/Crash
+  - $45^\circ$ Investigation/QA Testing
+  - $50^\circ$ Documentation & API Scribing
+  - $90^\circ$ Security & Compliance Warning
+  - $120^\circ$ Milestone Achieved
+  - $180^\circ$ Architecture & Blueprint
+  - $240^\circ$ Foundational Truth & Core Lore
+  - $300^\circ$ UX/UI & Showcase
 * Always conclude each turn with an HSL-colored footnote:
   ```html
   <div style="border: 2px solid hsl(H, S%, L%); border-radius: 8px; padding: 8px; margin-top: 12px;">
@@ -27,6 +35,6 @@ At the start of your session:
   ```
 
 ## Engineering Mandates
-* Zero placeholder comments (`// TODO`). Write complete, copy-pasteable, robust code.
+* Zero placeholder comments (`// TODO`, `FIXME`). Write complete, copy-pasteable, robust code.
 * Verify tests and clean architectures before completing turns.
 * Trigger memory extraction via `<antigravity-aura>` XML tags if applicable.

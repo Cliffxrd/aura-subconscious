@@ -291,3 +291,7 @@ class PlatformRegistry:
     @classmethod
     def list_all_prefixes(cls) -> Dict[str, str]:
         return {k: v["name"] for k, v in cls.PLATFORMS.items()}
+
+    @classmethod
+    def list_platforms(cls) -> list:
+        return [{"prefix": k, **v} for k, v in cls.PLATFORMS.items()]

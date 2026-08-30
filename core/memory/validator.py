@@ -3,7 +3,7 @@
 # AURA: Agentic Unified Recollection Archive
 
 import re
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List, Optional, Union
 from dataclasses import dataclass
 
 
@@ -25,24 +25,41 @@ class MemoryValidator:
         r"\[?\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?%?)\s*,\s*(\d+(?:\.\d+)?%?)\s*\]?"
     )
 
+    # Prohibited placeholder patterns (Zero-TODO Mandate)
+    TODO_PATTERN = re.compile(
+        r"(//\s*TODO|TODO:|//\s*Fix later|FIXME:|/\*\s*TODO|#\s*TODO)",
+        re.IGNORECASE,
+    )
+
     @staticmethod
-    def validate_memory(metadata: Dict[str, Any], content: str) -> ValidationResult:
+    def validate_memory(
+        metadata: Dict[str, Any], content: Optional[str]
+    ) -> ValidationResult:
         """Validate a memory against AURA quality gates and constraints."""
         errors = []
         warnings = []
 
-        # Check word count
+        if content is None:
+            content = ""
+
+        # 1. Zero-TODO Mandate Check
+        if MemoryValidator.TODO_PATTERN.search(content):
+            errors.append(
+                "Zero-TODO Mandate Violation: Memory content contains placeholder comments (// TODO, FIXME, etc.)."
+            )
+
+        # 2. Check word count
         words = content.split()
         if len(words) < MemoryValidator.MIN_WORD_COUNT:
             errors.append(
                 f"Content length ({len(words)} words) is below minimum required ({MemoryValidator.MIN_WORD_COUNT})."
             )
 
-        # Check required metadata fields
-        if "title" not in metadata:
+        # 3. Check required metadata fields
+        if "title" not in metadata or not metadata["title"]:
             errors.append("Missing required metadata field: 'title'.")
 
-        # Check tags
+        # 4. Check tags
         tags = metadata.get("tags", [])
         if isinstance(tags, str):
             tag_list = [t.strip() for t in tags.split(",") if t.strip()]
@@ -56,10 +73,10 @@ class MemoryValidator:
                 f"Insufficient tags. Found {len(tag_list)}, required {MemoryValidator.REQUIRED_TAGS}."
             )
 
-        # Check HSL bounds completely
+        # 5. Check HSL bounds completely
         hsl_val = metadata.get("hsl")
-        if hsl_val:
-            hsl_errors = MemoryValidator._validate_hsl(str(hsl_val))
+        if hsl_val is not None:
+            hsl_errors = MemoryValidator._validate_hsl(hsl_val)
             if hsl_errors:
                 errors.extend(hsl_errors)
         else:
@@ -70,29 +87,43 @@ class MemoryValidator:
         )
 
     @staticmethod
-    def _validate_hsl(hsl_str: str) -> List[str]:
-        """Strict validation of HSL string formats and bounds."""
+    def _validate_hsl(hsl_val: Union[str, List[Any]]) -> List[str]:
+        """Strict validation of HSL formats and bounds supporting strings or lists."""
         errors = []
-        match = MemoryValidator.HSL_PATTERN.search(hsl_str)
-        if not match:
-            return [
-                f"Invalid HSL format: '{hsl_str}'. Expected format: 'H, S, L' or '[H, S%, L%]'."
-            ]
 
-        try:
-            h_str, s_str, l_str = match.groups()
+        if isinstance(hsl_val, list):
+            if len(hsl_val) != 3:
+                return [
+                    f"Invalid HSL list length ({len(hsl_val)} items). Expected exactly 3 elements [H, S, L]."
+                ]
+            try:
+                h = float(str(hsl_val[0]).strip().replace("°", ""))
+                s = float(str(hsl_val[1]).strip().replace("%", ""))
+                l = float(str(hsl_val[2]).strip().replace("%", ""))
+            except (ValueError, TypeError) as e:
+                return [f"Could not parse HSL list elements as numbers: {e}"]
+        else:
+            hsl_str = str(hsl_val).strip()
+            # Clean possible Python stringified list quotes: "['120', '70%', '50%']" -> "120, 70%, 50%"
+            hsl_str = hsl_str.replace("'", "").replace('"', "")
+            match = MemoryValidator.HSL_PATTERN.search(hsl_str)
+            if not match:
+                return [
+                    f"Invalid HSL format: '{hsl_val}'. Expected format: 'H, S, L' or '[H, S%, L%]'"
+                ]
+            try:
+                h_str, s_str, l_str = match.groups()
+                h = float(h_str)
+                s = float(s_str.replace("%", ""))
+                l = float(l_str.replace("%", ""))
+            except ValueError as e:
+                return [f"Could not parse HSL values as floats: {e}"]
 
-            h = float(h_str)
-            s = float(s_str.replace("%", ""))
-            l = float(l_str.replace("%", ""))
-
-            if not (0 <= h <= 360):
-                errors.append(f"Hue {h} is out of bounds (0-360).")
-            if not (0 <= s <= 100):
-                errors.append(f"Saturation {s} is out of bounds (0-100).")
-            if not (0 <= l <= 100):
-                errors.append(f"Lightness {l} is out of bounds (0-100).")
-        except ValueError as e:
-            errors.append(f"Could not parse HSL values as floats: {e}")
+        if not (0 <= h <= 360):
+            errors.append(f"Hue {h} is out of bounds (0-360).")
+        if not (0 <= s <= 100):
+            errors.append(f"Saturation {s} is out of bounds (0-100).")
+        if not (0 <= l <= 100):
+            errors.append(f"Lightness {l} is out of bounds (0-100).")
 
         return errors

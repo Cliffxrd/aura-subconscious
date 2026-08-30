@@ -2,81 +2,89 @@
 # Copyright (c) 2026 Cliffxrd (Clifford Hattingh)
 # AURA: Agentic Unified Recollection Archive
 
-import os
-import sys
+import logging
 from pathlib import Path
-from typing import List, Tuple, Dict, Any
 from core.utils.config_resolver import ConfigResolver
 from core.memory.parser import MemoryParser
 from core.memory.validator import MemoryValidator
+from core.ingestion.registry import PlatformRegistry
+from core import __version__, __author__, __license__
+
+logger = logging.getLogger(__name__)
 
 
 class AuraDoctor:
-    """Comprehensive diagnostic health check suite for AURA."""
+    """Diagnostic health check suite for AURA."""
 
-    REQUIRED_DIRS = [
-        "Cortex",
-        "Hippocampus",
-        "Amygdala",
-        "Circadian",
-        "Chronicle",
-        "Context",
-        "Personas",
-    ]
+    def __init__(self, aura_home: Path = None):
+        self.aura_home = aura_home or ConfigResolver.resolve_aura_home()
 
-    @classmethod
-    def run_health_check(cls, cli_override: str = None) -> bool:
-        """Run all diagnostic health checks."""
+    def run_diagnostics(self) -> bool:
+        """Run all system checks and return overall health status."""
         print("[AURA] Running Neuro-Architecture Diagnostics...\n")
         all_passed = True
 
-        # 1. Check Configuration Resolution
-        aura_home = ConfigResolver.resolve_aura_home(cli_override)
-        print(
-            f"[{'PASS' if aura_home else 'FAIL'}] 1. AURA_HOME Path Resolved: {aura_home}"
-        )
-        if not aura_home:
-            all_passed = False
+        # 1. Path Resolution
+        print(f"[PASS] 1. AURA_HOME Path Resolved: {self.aura_home}")
 
-        # 2. Check Biological Directory Structure
+        # 2. Check Directories
         print("\n[CHECK] 2. Checking Cognitive Brain Regions:")
-        if aura_home and aura_home.exists():
-            for d in cls.REQUIRED_DIRS:
-                d_path = aura_home / d
-                status = "PASS" if d_path.exists() else "WARN"
-                print(f"  [{status}] /{d}")
-        else:
-            print("  [WARN] AURA_HOME directory not yet initialized (Run `aura init`).")
+        required_dirs = [
+            "Cortex",
+            "Hippocampus",
+            "Amygdala",
+            "Circadian",
+            "Chronicle",
+            "Context",
+            "Personas",
+        ]
+        for d in required_dirs:
+            dp = self.aura_home / d
+            if dp.exists():
+                print(f"  [PASS] /{d}")
+            else:
+                print(f"  [WARN] /{d}")
+                all_passed = False
 
-        # 3. Check Memory Frontmatter & HSL Integrity
+        # 3. Check Subconscious Memories Frontmatter
         print("\n[CHECK] 3. Checking Subconscious Memory Frontmatter & HSL Integrity:")
-        hippocampus = aura_home / "Hippocampus" if aura_home else None
-        if hippocampus and hippocampus.exists():
-            mem_files = list(hippocampus.glob("*.md"))
+        hippocampus = self.aura_home / "Hippocampus"
+        if hippocampus.exists():
+            memories = list(hippocampus.glob("*.md"))
             valid_mems = 0
-            for mem_file in mem_files:
+            for mem_file in memories:
                 parsed = MemoryParser.parse(mem_file)
-                if parsed and MemoryValidator.validate(parsed):
-                    valid_mems += 1
+                if parsed and "error" not in parsed:
+                    validation = MemoryValidator.validate_memory(
+                        parsed, parsed.get("content", "")
+                    )
+                    if validation.is_valid:
+                        valid_mems += 1
+                    else:
+                        print(
+                            f"  [WARN] Memory {mem_file.name} validation failed: {validation.errors}"
+                        )
                 else:
-                    print(f"  [WARN] Corrupted or non-standard memory: {mem_file.name}")
+                    print(
+                        f"  [WARN] Corrupted memory {mem_file.name}: {parsed.get('error')}"
+                    )
+
             print(
-                f"  [PASS] Verified {valid_mems}/{len(mem_files)} subconscious memory artifacts."
+                f"  [INFO] Valid Memories in Hippocampus: {valid_mems}/{len(memories)}"
             )
         else:
             print("  [INFO] No local Hippocampus found. Fresh install state.")
 
-        # 4. Check Platform Registry
-        from core.ingestion.registry import PlatformRegistry
+        # 4. Ingestion Platform Registry
+        print("\n[CHECK] 4. Universal Platform Registry: ", end="")
+        platforms = PlatformRegistry.list_platforms()
+        if len(platforms) >= 50:
+            print(f"[PASS] {len(platforms)} AI Platforms Loaded.")
+        else:
+            print(f"[WARN] Only {len(platforms)} platforms registered.")
+            all_passed = False
 
-        prefixes = PlatformRegistry.list_all_prefixes()
-        print(
-            f"\n[CHECK] 4. Universal Platform Registry: [PASS] {len(prefixes)} AI Platforms Loaded."
-        )
-
-        # 5. Check Framework Version & Telemetry SSOT
-        from core.__version__ import __version__, __author__, __license__
-
+        # 5. Versioning & SSOT
         print(
             f"\n[CHECK] 5. Framework Telemetry & SSOT: [PASS] v{__version__} ({__license__}) by {__author__}"
         )
@@ -87,7 +95,9 @@ class AuraDoctor:
                 "[SUCCESS] AURA Diagnostics Status: ALL SYSTEMS HEALTHY & SYNCHRONIZED"
             )
         else:
-            print("[WARNING] AURA Diagnostics Status: ATTENTION REQUIRED")
+            print(
+                "[WARN] AURA Diagnostics Status: SOME BRAIN REGIONS MISSING (Run `aura init` to complete scaffolding)"
+            )
         print("=" * 50 + "\n")
 
         return all_passed

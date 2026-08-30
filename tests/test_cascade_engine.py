@@ -8,56 +8,73 @@ from core.memory.cascade_engine import CascadeEngine
 def test_access_control():
     mem_all = {"id": "MEM_001", "access": ["All"]}
     mem_ben = {"id": "MEM_002", "access": ["Aura", "Ben"]}
-    mem_diana = {"id": "MEM_003", "access": ["Aura", "Diana"]}
+    mem_diana = {"id": "MEM_003", "access": "Aura, Diana"}
 
-    # Aura sees everything
+    # Aura has universal access
     assert CascadeEngine.is_accessible(mem_all, "Aura") is True
     assert CascadeEngine.is_accessible(mem_ben, "Aura") is True
     assert CascadeEngine.is_accessible(mem_diana, "Aura") is True
 
-    # Ben only sees All and Ben
+    # Subagent specific access
     assert CascadeEngine.is_accessible(mem_all, "Ben") is True
     assert CascadeEngine.is_accessible(mem_ben, "Ben") is True
     assert CascadeEngine.is_accessible(mem_diana, "Ben") is False
 
 
 def test_6488_cascade_assembly():
-    all_memories = [
+    all_mems = [
         {
             "id": f"MEM_{i:03d}",
-            "timestamp": f"2026-08-{i:02d}T12:00:00",
-            "hsl": (240, 70, 50),
+            "title": f"Memory {i}",
+            "timestamp": f"2026-06-{i+1:02d}",
+            "hsl": [120, 70, 50],
             "access": ["All"],
         }
-        for i in range(1, 25)
+        for i in range(25)
     ]
 
     requested = ["MEM_001", "MEM_002"]
-    session_hsl = (240.0, 70.0, 50.0)
-    conscious = ["realization_1", "realization_2"]
 
     context = CascadeEngine.assemble_active_context(
-        all_memories=all_memories,
+        all_memories=all_mems,
         requested_ids=requested,
-        session_hsl=session_hsl,
+        session_hsl=(120, 70, 50),
         agent_name="Aura",
-        conscious_stack=conscious,
+        conscious_stack=["Thought 1", "Thought 2"],
     )
 
-    # Tier 1: 2 requested
     assert len(context["tier_1_requested"]) == 2
-    # Tier 2: 6 base + 2 waterfall deficit from Tier 1 = 8
-    assert len(context["tier_2_recent"]) == 8
-    # Tier 3: 8 subconscious slots
+    assert len(context["tier_2_recent"]) == 8  # 6 + 2 waterfalled from Tier 1
     assert len(context["tier_3_subconscious"]) == 8
-    # Tier 4: 2 conscious stack items
     assert len(context["tier_4_conscious"]) == 2
 
-    # Verify zero ID duplication across tiers
-    tier1_ids = {m["id"] for m in context["tier_1_requested"]}
-    tier2_ids = {m["id"] for m in context["tier_2_recent"]}
-    tier3_ids = {m["id"] for m in context["tier_3_subconscious"]}
+    # Zero duplication assertion
+    t1_ids = {m["id"] for m in context["tier_1_requested"]}
+    t2_ids = {m["id"] for m in context["tier_2_recent"]}
+    t3_ids = {m["id"] for m in context["tier_3_subconscious"]}
 
-    assert len(tier1_ids.intersection(tier2_ids)) == 0
-    assert len(tier1_ids.intersection(tier3_ids)) == 0
-    assert len(tier2_ids.intersection(tier3_ids)) == 0
+    assert len(t1_ids.intersection(t2_ids)) == 0
+    assert len(t1_ids.intersection(t3_ids)) == 0
+    assert len(t2_ids.intersection(t3_ids)) == 0
+
+
+def test_waterfall_deficit_slot_borrowing():
+    # If Tier 1 has 0 items, Tier 2 (recent) should absorb up to 10 slots (4 + 6)
+    subconscious = [
+        {
+            "id": f"MEM_{i:03d}",
+            "title": f"Memory {i}",
+            "timestamp": f"2026-06-{i+1:02d}",
+            "hsl": [120, 70, 50],
+            "access": ["All"],
+        }
+        for i in range(20)
+    ]
+    matrix = CascadeEngine.assemble_active_context(
+        all_memories=subconscious,
+        requested_ids=[],
+        session_hsl=(120, 70, 50),
+        agent_name="Aura",
+    )
+    assert len(matrix["tier_1_requested"]) == 0
+    assert len(matrix["tier_2_recent"]) == 10

@@ -278,7 +278,37 @@ class AuraWizard:
 
     def hydrate_templates(self):
         """Copy and populate templates into user instance."""
-        # 1. PersonalContext.md
+        repo_root = Path(__file__).resolve().parent.parent.parent
+        tpl_dir = repo_root / "templates"
+
+        replacements = {
+            "{{AGENT_NAME}}": self.companion_name,
+            "{{USER_NAME}}": self.user_name,
+            "{{AURA_HOME}}": str(self.target_home).replace("\\", "/"),
+            "{{TECH_STACK}}": self.tech_stack,
+            "{{COMM_STYLE}}": self.communication_style,
+        }
+
+        # 1. Root AURA.md & SOUL.md
+        for root_doc in ["AURA.md", "SOUL.md"]:
+            src_tpl = tpl_dir / f"{root_doc}.template"
+            dest_file = self.target_home / root_doc
+            if src_tpl.exists() and not dest_file.exists():
+                text = src_tpl.read_text(encoding="utf-8")
+                for k, v in replacements.items():
+                    text = text.replace(k, v)
+                dest_file.write_text(text, encoding="utf-8")
+
+        # 2. Circadian/HEARTBEAT.md
+        heartbeat_tpl = tpl_dir / "HEARTBEAT.md.template"
+        dest_heartbeat = self.target_home / "Circadian" / "HEARTBEAT.md"
+        if heartbeat_tpl.exists() and not dest_heartbeat.exists():
+            text = heartbeat_tpl.read_text(encoding="utf-8")
+            for k, v in replacements.items():
+                text = text.replace(k, v)
+            dest_heartbeat.write_text(text, encoding="utf-8")
+
+        # 3. PersonalContext.md
         context_file = self.target_home / "Context" / "PersonalContext.md"
         if not context_file.exists():
             content = f"""# {self.companion_name} Mind: Personal Context
@@ -297,7 +327,7 @@ class AuraWizard:
             with open(context_file, "w", encoding="utf-8") as f:
                 f.write(content)
 
-        # 2. RequestedMemories.md
+        # 4. RequestedMemories.md
         req_file = self.target_home / "Context" / "RequestedMemories.md"
         if not req_file.exists():
             with open(req_file, "w", encoding="utf-8") as f:
@@ -305,7 +335,7 @@ class AuraWizard:
                     "# Requested Memories (Tier 1 Directives)\n- MEM_001\n- MEM_002\n"
                 )
 
-        # 3. Topics.md & FrequentTasks.md
+        # 5. Topics.md & FrequentTasks.md
         topics_file = self.target_home / "Context" / "Topics.md"
         if not topics_file.exists():
             with open(topics_file, "w", encoding="utf-8") as f:
