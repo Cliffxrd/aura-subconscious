@@ -34,6 +34,9 @@ Some narrative text.
     assert bullets[0] == "Bullet 1"
     assert bullets[1] == "Bullet 2"
     assert bullets[2] == "Bullet 3"
+    # Null/type boundary check
+    assert MemoryParser.extract_bullets(None) == []
+    assert MemoryParser.extract_bullets(123) == []
 
 
 def test_parse_empty_or_malformed_frontmatter():
@@ -41,3 +44,15 @@ def test_parse_empty_or_malformed_frontmatter():
     metadata, body = MemoryParser.parse_file(content)
     assert metadata == {}
     assert body == content
+
+def test_boundary_states_parser():
+    import pytest
+    with pytest.raises(TypeError):
+        MemoryParser.parse_file(None)
+    
+    assert MemoryParser.extract_bullets(None) == []
+    
+    # Empty string
+    metadata, body = MemoryParser.parse_file("")
+    assert metadata == {}
+    assert body == ""

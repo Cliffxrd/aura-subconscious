@@ -32,7 +32,7 @@ class ConfigResolver:
             try:
                 with open(config_file, "r", encoding="utf-8") as f:
                     config = json.load(f)
-                if "aura_home" in config and config["aura_home"]:
+                if isinstance(config, dict) and config.get("aura_home"):
                     return Path(config["aura_home"]).resolve()
             except json.JSONDecodeError as e:
                 logger.warning(
@@ -52,14 +52,17 @@ class ConfigResolver:
         return Path(os.path.expanduser("~/.aura")).resolve()
 
     @staticmethod
-    def load_config(aura_home: Path) -> Dict[str, Any]:
+    def load_config(aura_home: Optional[Path]) -> Dict[str, Any]:
         """Load optional configuration from ~/.aura/config/aura_config.json."""
-        config_path = aura_home / "config" / "aura_config.json"
+        if not aura_home:
+            return {}
+        config_path = Path(aura_home) / "config" / "aura_config.json"
         if not config_path.exists():
             return {}
         try:
             with open(config_path, "r", encoding="utf-8") as f:
-                return json.load(f)
+                config = json.load(f)
+                return config if isinstance(config, dict) else {}
         except json.JSONDecodeError as e:
             logger.warning(f"Malformed config file at {config_path}: {e}")
             return {}

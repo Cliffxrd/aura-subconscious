@@ -55,3 +55,19 @@ def test_validate_hsl_formats():
     # Out of bounds
     assert len(MemoryValidator._validate_hsl("400, 70%, 50%")) > 0
     assert len(MemoryValidator._validate_hsl("120, 150%, 50%")) > 0
+
+def test_boundary_states_validator():
+    # None metadata
+    res = MemoryValidator.validate_memory(None, "content")
+    assert res.is_valid is False
+    assert "Invalid metadata format: must be a dictionary." in res.errors
+
+    # Malformed types: metadata string
+    res2 = MemoryValidator.validate_memory("not a dict", "content")
+    assert res2.is_valid is False
+    assert "Invalid metadata format: must be a dictionary." in res2.errors
+    
+    # String HSL invalid
+    assert len(MemoryValidator._validate_hsl("invalid_hsl")) > 0
+    assert len(MemoryValidator._validate_hsl(None)) > 0
+    assert len(MemoryValidator._validate_hsl(123)) > 0

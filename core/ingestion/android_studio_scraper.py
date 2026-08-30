@@ -25,7 +25,9 @@ class AndroidStudioScraper:
             return conversations
 
         try:
-            with sqlite3.connect(f"file:{self.db_path}?mode=ro", uri=True) as conn:
+            with closing(
+                sqlite3.connect(f"file:{self.db_path}?mode=ro", uri=True)
+            ) as conn:
                 conn.row_factory = sqlite3.Row
                 with closing(conn.cursor()) as cursor:
                     # Attempt to extract messages, schema depends on actual studio version

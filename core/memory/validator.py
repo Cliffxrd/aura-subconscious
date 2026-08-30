@@ -20,9 +20,9 @@ class MemoryValidator:
     MIN_WORD_COUNT = 50
     REQUIRED_TAGS = 1
 
-    # HSL string format: "120, 70%, 50%" or "[120, 70, 50]" or "120, 70, 50"
+    # Anchored HSL string format
     HSL_PATTERN = re.compile(
-        r"\[?\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?%?)\s*,\s*(\d+(?:\.\d+)?%?)\s*\]?"
+        r"^\[?\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?%?)\s*,\s*(\d+(?:\.\d+)?%?)\s*\]?$"
     )
 
     # Prohibited placeholder patterns (Zero-TODO Mandate)
@@ -33,29 +33,32 @@ class MemoryValidator:
 
     @staticmethod
     def validate_memory(
-        metadata: Dict[str, Any], content: Optional[str]
+        metadata: Dict[str, Any], content: Optional[Any]
     ) -> ValidationResult:
         """Validate a memory against AURA quality gates and constraints."""
         errors = []
         warnings = []
 
-        if content is None:
-            content = ""
+        content_str = str(content) if content is not None else ""
 
         # 1. Zero-TODO Mandate Check
-        if MemoryValidator.TODO_PATTERN.search(content):
+        if MemoryValidator.TODO_PATTERN.search(content_str):
             errors.append(
                 "Zero-TODO Mandate Violation: Memory content contains placeholder comments (// TODO, FIXME, etc.)."
             )
 
         # 2. Check word count
-        words = content.split()
+        words = content_str.split()
         if len(words) < MemoryValidator.MIN_WORD_COUNT:
             errors.append(
                 f"Content length ({len(words)} words) is below minimum required ({MemoryValidator.MIN_WORD_COUNT})."
             )
 
         # 3. Check required metadata fields
+        if not isinstance(metadata, dict):
+            errors.append("Invalid metadata format: must be a dictionary.")
+            return ValidationResult(is_valid=False, errors=errors, warnings=warnings)
+
         if "title" not in metadata or not metadata["title"]:
             errors.append("Missing required metadata field: 'title'.")
 
@@ -64,7 +67,7 @@ class MemoryValidator:
         if isinstance(tags, str):
             tag_list = [t.strip() for t in tags.split(",") if t.strip()]
         elif isinstance(tags, list):
-            tag_list = tags
+            tag_list = [str(t).strip() for t in tags if str(t).strip()]
         else:
             tag_list = []
 
@@ -91,7 +94,7 @@ class MemoryValidator:
         """Strict validation of HSL formats and bounds supporting strings or lists."""
         errors = []
 
-        if isinstance(hsl_val, list):
+        if isinstance(hsl_val, (list, tuple)):
             if len(hsl_val) != 3:
                 return [
                     f"Invalid HSL list length ({len(hsl_val)} items). Expected exactly 3 elements [H, S, L]."
@@ -106,7 +109,7 @@ class MemoryValidator:
             hsl_str = str(hsl_val).strip()
             # Clean possible Python stringified list quotes: "['120', '70%', '50%']" -> "120, 70%, 50%"
             hsl_str = hsl_str.replace("'", "").replace('"', "")
-            match = MemoryValidator.HSL_PATTERN.search(hsl_str)
+            match = MemoryValidator.HSL_PATTERN.match(hsl_str)
             if not match:
                 return [
                     f"Invalid HSL format: '{hsl_val}'. Expected format: 'H, S, L' or '[H, S%, L%]'"

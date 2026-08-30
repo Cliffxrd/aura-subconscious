@@ -29,8 +29,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
-[![Architecture: Neuro--Cognitive](https://img.shields.io/badge/Architecture-Neuro--Cognitive-magenta.svg)](#-master-neuro-architecture)
-[![Memory Matrix: 4--6--8--8](https://img.shields.io/badge/Memory%20Matrix-4--6--8--8-cyan.svg)](#-the-memory-matrix-4-6-8-8-harmonic-architecture)
+[![Architecture: Neuro--Cognitive](https://img.shields.io/badge/Architecture-Neuro--Cognitive-magenta.svg)](#master-neuro-architecture)
+[![Memory Matrix: 4--6--8--8](https://img.shields.io/badge/Memory%20Matrix-4--6--8--8-cyan.svg)](#the-memory-matrix-4-6-8-8-harmonic-architecture)
 [![Creator: Cliffxrd](https://img.shields.io/badge/Architect-Cliffxrd-orange.svg)](https://github.com/Cliffxrd)
 
 </div>
@@ -39,10 +39,10 @@
 
 ## 🧭 Cartography (Quick Navigation)
 
-- [🌌 Overview](#-overview) • [🧠 Master Neuro-Architecture](#-master-neuro-architecture) • [⚡ The Memory Matrix](#-the-memory-matrix-4-6-8-8-harmonic-architecture)
-- [🌈 Cognitive Domains & HSL Vector Space](#-the-hsl-neuro-cognitive-vector-space) • [🚀 Quickstart](#-quickstart-under-2-minutes) • [📟 CLI Cookbook](#-aura-cli-command-cookbook)
-- [🌐 Universal Chat Ingestion](#-universal-50-platform-chat-ingestion--semantic-pipeline) • [🔒 Data Sovereignty](#-data-sovereignty-zero-server-architecture--privacy)
-- [👥 Subagent Personas](#-archetypal-subagent-personas) • [📜 Canonical Origin](#-canonical-origin--philosophy) • [🗺️ Roadmap](#-roadmap--upcoming-milestones) • [📄 License](#-license--attribution)
+- [🌌 Overview](#overview) • [🧠 Master Neuro-Architecture](#master-neuro-architecture) • [⚡ The Memory Matrix](#the-memory-matrix-4-6-8-8-harmonic-architecture)
+- [🌈 Cognitive Domains & HSL Vector Space](#the-hsl-neuro-cognitive-vector-space) • [🚀 Quickstart](#quickstart-under-2-minutes) • [📟 CLI Cookbook](#aura-cli-command-cookbook)
+- [🌐 Universal Chat Ingestion](#universal-50-platform-chat-ingestion--semantic-pipeline) • [🔒 Data Sovereignty](#data-sovereignty-zero-server-architecture--privacy)
+- [👥 Subagent Personas](#archetypal-subagent-personas) • [📜 Canonical Origin](#canonical-origin--philosophy) • [🗺️ Roadmap](#roadmap--upcoming-milestones) • [📄 License](#license--attribution)
 
 ---
 
@@ -248,6 +248,7 @@ aura doctor
 | :--- | :--- | :--- |
 | **`aura init`** | Interactive setup wizard | First-time setup, onboarding questionnaire, persona selection |
 | **`aura doctor`** | System health & diagnostic checker | Verify paths, memory frontmatter, and HSL integrity |
+| **`aura heartbeat`** | Trigger circadian memory sync | Scheduled nightly sync, sleep/dream memory pruning |
 | **`aura scrape`** | Interactive multi-source chat scraper | Import external transcripts, Antigravity logs, or SQLite DBs |
 | **`aura scrape --source raw`** | Ingest chat drops directly | Ingest `.json` / `.md` chat dumps in `~/.aura/documents/rawchats/` |
 | **`aura scrape --source antigravity`**| Scrape Antigravity sessions | Parse local `.gemini/antigravity/brain/` agent logs |

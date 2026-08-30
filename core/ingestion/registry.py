@@ -276,16 +276,22 @@ class PlatformRegistry:
     }
 
     @classmethod
-    def get_platform(cls, prefix: str) -> Optional[Dict[str, Any]]:
+    def get_platform(cls, prefix: Optional[str]) -> Optional[Dict[str, Any]]:
+        if not prefix or not isinstance(prefix, str):
+            return None
         return cls.PLATFORMS.get(prefix.upper())
 
     @classmethod
-    def get_platform_name(cls, prefix: str) -> str:
+    def get_platform_name(cls, prefix: Optional[str]) -> str:
+        if not prefix or not isinstance(prefix, str):
+            return "Unknown Platform"
         platform = cls.PLATFORMS.get(prefix.upper())
         return platform["name"] if platform else "Unknown Platform"
 
     @classmethod
-    def is_valid_prefix(cls, prefix: str) -> bool:
+    def is_valid_prefix(cls, prefix: Optional[str]) -> bool:
+        if not prefix or not isinstance(prefix, str):
+            return False
         return prefix.upper() in cls.PLATFORMS
 
     @classmethod

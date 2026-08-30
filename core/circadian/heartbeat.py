@@ -63,7 +63,7 @@ class CircadianHeartbeat:
                     if validation.is_valid:
                         # Promote to main Hippocampus
                         dest = self.hippocampus_dir / tf.name
-                        tf.rename(dest)
+                        tf.replace(dest)
                         report["triage_fixed"] += 1
                         report["notes"].append(f"Promoted resolved memory: {tf.name}")
                     else:

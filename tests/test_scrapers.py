@@ -56,3 +56,8 @@ def test_raw_chat_importer_json(tmp_path):
     assert len(records) == 1
     assert records[0]["id"] == "CL042"
     assert "[REDACTED_SECRET]" in records[0]["content"]
+
+def test_boundary_states_scrapers():
+    import pytest
+    with pytest.raises(Exception):
+        RawChatImporter(staging_dir=None, output_dir=None)

@@ -55,7 +55,8 @@ def build_parser() -> argparse.ArgumentParser:
 
     # 4. aura heartbeat
     subparsers.add_parser(
-        "heartbeat", help="Trigger Heather's Circadian sweep and triage consolidation"
+        "heartbeat",
+        help="Trigger Heather's Circadian sweep and triage consolidation",
     )
 
     # 5. aura platforms
@@ -86,9 +87,16 @@ def main() -> None:
         elif args.command in ["scrape", "import"]:
             scrape_wiz = AuraScrapeWizard()
             if args.source:
-                scrape_wiz.run_direct_source(args.source)
+                if args.source == "all":
+                    scrape_wiz.run_full_auto_discovery()
+                elif args.source == "raw":
+                    scrape_wiz.ingest_raw_drops()
+                elif args.source == "antigravity":
+                    scrape_wiz.scrape_antigravity()
+                elif args.source == "android-studio":
+                    scrape_wiz.scrape_android_studio()
             else:
-                scrape_wiz.run_interactive()
+                scrape_wiz.run_menu()
         elif args.command == "heartbeat":
             heartbeat = CircadianHeartbeat()
             heartbeat.run_heartbeat()
@@ -100,7 +108,7 @@ def main() -> None:
             for p in sorted(platforms, key=lambda x: x["prefix"]):
                 print(f"  [{p['prefix']}] {p['name']:<28} ({p['category']})")
             print("=" * 65 + "\n")
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, EOFError):
         print("\n\n[AURA] Operation canceled by user. Exiting cleanly.\n")
         sys.exit(130)
     except Exception as e:

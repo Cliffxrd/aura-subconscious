@@ -18,7 +18,7 @@ class RawChatImporter:
 
     # Secret masking regex (API Keys, Bearer tokens, GitHub tokens)
     SECRET_PATTERN = re.compile(
-        r"(AIza[0-9A-Za-z-_]{20,}|sk-[A-Za-z0-9-_]{20,}|ghp_[0-9A-Za-z]{30,}|bearer\s+[A-Za-z0-9._~+/-]+=*)",
+        r"(AIza[0-9A-Za-z_-]{20,}|sk-[A-Za-z0-9_-]{20,}|ghp_[0-9A-Za-z]{30,}|bearer\s+[A-Za-z0-9._~+\-/]+=*)",
         re.IGNORECASE,
     )
 
@@ -62,7 +62,7 @@ class RawChatImporter:
 
     def _sanitize_chat_id(self, raw_stem: str) -> str:
         """Sanitize filename to prevent path traversal vulnerabilities."""
-        sanitized = re.sub(r"[^A-Za-z0-9_-]", "_", raw_stem).upper()
+        sanitized = re.sub(r"[^A-Za-z0-9_-]", "_", str(raw_stem)).upper()
         return sanitized or "CHAT_UNKNOWN"
 
     def _mask_secrets(self, text: str) -> str:
@@ -83,7 +83,7 @@ class RawChatImporter:
 
     def _process_markdown(self, file_path: Path) -> Dict[str, Any]:
         """Parses a markdown chat drop, extracting simple metadata and content."""
-        content = file_path.read_text(encoding="utf-8")
+        content = file_path.read_text(encoding="utf-8", errors="replace")
         content = self._mask_secrets(content)
         chat_id = self._sanitize_chat_id(file_path.stem)
 
@@ -95,7 +95,7 @@ class RawChatImporter:
         output_file = self.output_dir / f"{chat_id}.json"
         record = {"id": chat_id, "metadata": metadata, "content": content}
 
-        with open(output_file, "w", encoding="utf-8") as f:
+        with open(output_file, "w", encoding="utf-8", errors="replace") as f:
             json.dump(record, f, indent=2)
 
         return record
@@ -104,7 +104,7 @@ class RawChatImporter:
         """Parses a JSON chat drop and standardizes it."""
         chat_id = self._sanitize_chat_id(file_path.stem)
 
-        with open(file_path, "r", encoding="utf-8") as f:
+        with open(file_path, "r", encoding="utf-8", errors="replace") as f:
             data = json.load(f)
 
         raw_content = data.get("content", json.dumps(data))
@@ -123,15 +123,20 @@ class RawChatImporter:
         }
 
         output_file = self.output_dir / f"{chat_id}.json"
-        with open(output_file, "w", encoding="utf-8") as f:
+        with open(output_file, "w", encoding="utf-8", errors="replace") as f:
             json.dump(record, f, indent=2)
 
         return record
 
     def _archive_file(self, file_path: Path, chat_id: str):
-        """Moves processed files into an archive directory."""
-        archive_dir = self.staging_dir / "archived"
-        archive_dir.mkdir(exist_ok=True)
-        dest = archive_dir / f"{chat_id}{file_path.suffix}"
-        shutil.move(str(file_path), str(dest))
-        logger.info(f"Archived {file_path.name} to {dest.name}")
+        """Moves processed files into an archive directory safely."""
+        try:
+            archive_dir = self.staging_dir / "archived"
+            archive_dir.mkdir(parents=True, exist_ok=True)
+            dest = archive_dir / f"{chat_id}{file_path.suffix}"
+            if dest.exists():
+                dest.unlink()
+            shutil.move(str(file_path), str(dest))
+            logger.info(f"Archived {file_path.name} to {dest.name}")
+        except Exception as e:
+            logger.error(f"Failed to archive {file_path.name}: {e}")

@@ -45,6 +45,13 @@ class BrowserScraper:
             )
             page = await context.new_page()
 
+            if not url.startswith(("http://", "https://")):
+                await browser.close()
+                return {
+                    "status": "error",
+                    "message": "Only HTTP/HTTPS URLs are allowed.",
+                }
+
             try:
                 response = await page.goto(url, wait_until="networkidle", timeout=30000)
                 if not response or not response.ok:

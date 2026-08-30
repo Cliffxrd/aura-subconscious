@@ -86,6 +86,8 @@ class MemoryParser:
     @staticmethod
     def extract_bullets(content: str) -> List[str]:
         """Extract bullet points robustly from markdown content."""
+        if not content or not isinstance(content, str):
+            return []
         bullets = []
         for line in content.split("\n"):
             stripped = line.lstrip()

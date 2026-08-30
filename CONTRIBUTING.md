@@ -35,7 +35,7 @@ python -m unittest discover -s tests
 
 ### 3. Run Neuro-Architecture Health Check
 ```bash
-python core/cli/main.py doctor
+aura doctor
 ```
 
 ---
@@ -45,7 +45,7 @@ python core/cli/main.py doctor
 AURA enforces strict engineering standards:
 * **Zero Placeholders**: Never commit `// TODO`, empty `pass` blocks, or truncated code snippets.
 * **3-Tier Casing Law**:
-  * `ALL_CAPS.md` for root manifests (`AURA.md`, `SOUL.md`, `HEARTBEAT.md`, `THE_ORIGIN.md`).
+  * `ALL_CAPS.md` for core manifests and canonical lore (`AURA.md`, `SOUL.md`, `HEARTBEAT.md`, `heritage/THE_ORIGIN.md`).
   * `PascalCase.md` for human-edited context (`PersonalContext.md`, `RequestedMemories.md`, `Topics.md`).
   * `snake_case` for runtime files, memory artifacts (`memory_001.md`), and Python modules.
 * **Pure Python Standard Library**: Core modules should avoid unnecessary third-party dependencies wherever possible.

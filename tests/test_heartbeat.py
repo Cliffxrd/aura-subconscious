@@ -27,3 +27,9 @@ def test_circadian_heartbeat_run(tmp_path):
     assert report["triage_fixed"] == 1
     assert (aura_home / "Hippocampus" / "memory_fixed.md").exists()
     assert (aura_home / "Circadian" / "HEARTBEAT.md").exists()
+
+def test_boundary_states_heartbeat():
+    heartbeat = CircadianHeartbeat(aura_home=None)
+    report = heartbeat.run_heartbeat()
+    assert isinstance(report, dict)
+    assert "triage_scanned" in report

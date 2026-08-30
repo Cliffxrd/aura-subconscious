@@ -30,3 +30,6 @@ aura = "core.cli.main:main"
 where = ["."]
 include = ["core*"]
 
+[tool.setuptools]
+include-package-data = true
+

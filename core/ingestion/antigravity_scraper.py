@@ -38,7 +38,7 @@ class AntigravityScraper:
         """Parses a single jsonl transcript file."""
         steps = []
         try:
-            with open(file_path, "r", encoding="utf-8") as f:
+            with open(file_path, "r", encoding="utf-8", errors="replace") as f:
                 for line in f:
                     if not line.strip():
                         continue

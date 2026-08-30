@@ -310,6 +310,7 @@ class AuraWizard:
 
         # 3. PersonalContext.md
         context_file = self.target_home / "Context" / "PersonalContext.md"
+        context_file.parent.mkdir(parents=True, exist_ok=True)
         if not context_file.exists():
             content = f"""# {self.companion_name} Mind: Personal Context
 
@@ -357,14 +358,29 @@ class AuraWizard:
         dest_personas = self.target_home / "Personas"
         dest_personas.mkdir(parents=True, exist_ok=True)
 
+        replacements = {
+            "{{AGENT_NAME}}": self.companion_name,
+            "{{USER_NAME}}": self.user_name,
+            "{{AURA_HOME}}": str(self.target_home).replace("\\", "/"),
+        }
+
+        def copy_and_hydrate(src_path, dest_path):
+            if src_path.exists():
+                try:
+                    text = src_path.read_text(encoding="utf-8")
+                    for k, v in replacements.items():
+                        text = text.replace(k, v)
+                    dest_path.write_text(text, encoding="utf-8")
+                except UnicodeDecodeError:
+                    shutil.copy(src_path, dest_path)
+
         for agent in self.AVAILABLE_SUBAGENTS:
             if agent["id"] in self.selected_subagent_ids:
                 name = agent["name"]
 
                 # Copy YAML manifest
                 yaml_file = tpl_personas / f"{name}.agent.yaml"
-                if yaml_file.exists():
-                    shutil.copy(yaml_file, dest_personas / f"{name}.agent.yaml")
+                copy_and_hydrate(yaml_file, dest_personas / f"{name}.agent.yaml")
 
                 # Scaffold directory structure
                 agent_dir = dest_personas / name
@@ -375,12 +391,12 @@ class AuraWizard:
                 if src_agent_dir.exists():
                     for item in src_agent_dir.glob("*"):
                         if item.is_file():
-                            shutil.copy(item, agent_dir / item.name)
+                            copy_and_hydrate(item, agent_dir / item.name)
 
     def seed_starter_memories(self):
         """Seed Hippocampus with universal engineering starter pack."""
         repo_root = Path(__file__).resolve().parent.parent.parent
-        starter_dir = repo_root / "Extras" / "starter_memories"
+        starter_dir = repo_root / "extras" / "starter_memories"
         dest_hippocampus = self.target_home / "Hippocampus"
 
         if starter_dir.exists():

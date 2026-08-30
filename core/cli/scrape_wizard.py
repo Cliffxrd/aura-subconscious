@@ -119,6 +119,9 @@ class AuraScrapeWizard:
             ).strip()
             if custom:
                 default_brain = Path(custom)
+                if not default_brain.is_dir():
+                    print(f"  [ERROR] Path is not a valid directory: {default_brain}")
+                    return 0
             else:
                 return 0
 
@@ -149,6 +152,9 @@ class AuraScrapeWizard:
             ).strip()
             if custom:
                 db_path = Path(custom)
+                if not db_path.is_file():
+                    print(f"  [ERROR] Path is not a valid file: {db_path}")
+                    return 0
             else:
                 return 0
 
