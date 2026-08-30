@@ -97,9 +97,9 @@ class MemoryValidator:
                     f"Invalid HSL list length ({len(hsl_val)} items). Expected exactly 3 elements [H, S, L]."
                 ]
             try:
-                h = float(str(hsl_val[0]).strip().replace("°", ""))
-                s = float(str(hsl_val[1]).strip().replace("%", ""))
-                l = float(str(hsl_val[2]).strip().replace("%", ""))
+                hue = float(str(hsl_val[0]).strip().replace("°", ""))
+                sat = float(str(hsl_val[1]).strip().replace("%", ""))
+                light = float(str(hsl_val[2]).strip().replace("%", ""))
             except (ValueError, TypeError) as e:
                 return [f"Could not parse HSL list elements as numbers: {e}"]
         else:
@@ -113,17 +113,17 @@ class MemoryValidator:
                 ]
             try:
                 h_str, s_str, l_str = match.groups()
-                h = float(h_str)
-                s = float(s_str.replace("%", ""))
-                l = float(l_str.replace("%", ""))
+                hue = float(h_str)
+                sat = float(s_str.replace("%", ""))
+                light = float(l_str.replace("%", ""))
             except ValueError as e:
                 return [f"Could not parse HSL values as floats: {e}"]
 
-        if not (0 <= h <= 360):
-            errors.append(f"Hue {h} is out of bounds (0-360).")
-        if not (0 <= s <= 100):
-            errors.append(f"Saturation {s} is out of bounds (0-100).")
-        if not (0 <= l <= 100):
-            errors.append(f"Lightness {l} is out of bounds (0-100).")
+        if not (0 <= hue <= 360):
+            errors.append(f"Hue {hue} is out of bounds (0-360).")
+        if not (0 <= sat <= 100):
+            errors.append(f"Saturation {sat} is out of bounds (0-100).")
+        if not (0 <= light <= 100):
+            errors.append(f"Lightness {light} is out of bounds (0-100).")
 
         return errors

@@ -2,10 +2,11 @@
 # Copyright (c) 2026 Cliffxrd (Clifford Hattingh)
 # AURA: Agentic Unified Recollection Archive
 
+import sys
 import logging
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, Any, List
+from typing import Dict, Any
 from core.utils.config_resolver import ConfigResolver
 from core.memory.parser import MemoryParser
 from core.memory.validator import MemoryValidator
@@ -26,8 +27,16 @@ class CircadianHeartbeat:
     def run_heartbeat(self) -> Dict[str, Any]:
         """Execute the 3 PM circadian health sweep & triage consolidation."""
         now = datetime.now(timezone.utc)
+
+        # Ensure utf-8 encoding on standard out if possible
+        if hasattr(sys.stdout, "reconfigure"):
+            try:
+                sys.stdout.reconfigure(encoding="utf-8")
+            except Exception:
+                pass
+
         print(
-            f"\n[HEATHER] 🧭 Initiating Circadian Heartbeat Sweep at {now.isoformat()}..."
+            f"\n[HEATHER] Initiating Circadian Heartbeat Sweep at {now.isoformat()}..."
         )
 
         report = {
@@ -72,7 +81,7 @@ class CircadianHeartbeat:
         self._write_heartbeat_log(report)
 
         print(
-            f"[HEATHER] ✨ Sweep complete. Active Memories: {report['total_memories']} | Fixed: {report['triage_fixed']} | In Triage: {report['triage_pending']}"
+            f"[HEATHER] Sweep complete. Active Memories: {report['total_memories']} | Fixed: {report['triage_fixed']} | In Triage: {report['triage_pending']}"
         )
         return report
 

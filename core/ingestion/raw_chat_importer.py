@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 class RawChatImporter:
     """Importer for raw chat drops (CG###, CL###) supporting JSON and Markdown formats."""
 
-    # Secret masking regex (API Keys, Bearer tokens)
+    # Secret masking regex (API Keys, Bearer tokens, GitHub tokens)
     SECRET_PATTERN = re.compile(
         r"(AIza[0-9A-Za-z-_]{20,}|sk-[A-Za-z0-9-_]{20,}|ghp_[0-9A-Za-z]{30,}|bearer\s+[A-Za-z0-9._~+/-]+=*)",
         re.IGNORECASE,
@@ -67,7 +67,19 @@ class RawChatImporter:
 
     def _mask_secrets(self, text: str) -> str:
         """Mask sensitive API tokens and keys."""
+        if not isinstance(text, str):
+            text = str(text)
         return self.SECRET_PATTERN.sub("[REDACTED_SECRET]", text)
+
+    def _mask_dict_recursively(self, data: Any) -> Any:
+        """Recursively mask secrets across nested dictionaries and lists."""
+        if isinstance(data, dict):
+            return {k: self._mask_dict_recursively(v) for k, v in data.items()}
+        elif isinstance(data, list):
+            return [self._mask_dict_recursively(item) for item in data]
+        elif isinstance(data, str):
+            return self._mask_secrets(data)
+        return data
 
     def _process_markdown(self, file_path: Path) -> Dict[str, Any]:
         """Parses a markdown chat drop, extracting simple metadata and content."""
@@ -95,12 +107,17 @@ class RawChatImporter:
         with open(file_path, "r", encoding="utf-8") as f:
             data = json.load(f)
 
-        raw_content = data.get("content", str(data))
-        masked_content = self._mask_secrets(raw_content)
+        raw_content = data.get("content", json.dumps(data))
+        if isinstance(raw_content, (dict, list)):
+            raw_content = json.dumps(raw_content)
+
+        masked_content = self._mask_secrets(str(raw_content))
+        raw_metadata = data.get("metadata", {"original_format": "json"})
+        masked_metadata = self._mask_dict_recursively(raw_metadata)
 
         record = {
             "id": chat_id,
-            "metadata": data.get("metadata", {"original_format": "json"}),
+            "metadata": masked_metadata,
             "content": masked_content,
             "imported_at": datetime.now(timezone.utc).isoformat(),
         }

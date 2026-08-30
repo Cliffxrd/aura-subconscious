@@ -6,12 +6,12 @@ Thank you for your interest in contributing to the **Agentic Unified Recollectio
 
 ## 🌟 Ways to Contribute
 
-1. **🧠 Universal Engineering Memories (`Extras/starter_memories/`)**:
+1. **🧠 Universal Engineering Memories (`extras/starter_memories/`)**:
    - Contribute sanitized, high-value engineering patterns (e.g. Compose UDF, KMP coroutine testing, backend optimizations).
    - Use our GitHub Issue template: `🧠 Universal Memory Contribution`.
 2. **🌐 Platform Scrapers (`core/ingestion/`)**:
    - Add scrapers or format adapters for newly released AI coding platforms, IDEs, or ACP agents.
-3. **🎭 Persona Blueprints (`Personas/`)**:
+3. **🎭 Persona Blueprints (`templates/Personas/`)**:
    - Create specialized subagent personas with unique cognitive traits, tools, and domain mandates.
 4. **⚡ Core Architecture & Algorithms**:
    - Optimize the 4-6-8-8 Memory Matrix cascade deduplication or HSL circular math.
